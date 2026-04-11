@@ -1,0 +1,575 @@
+/* ═══════════════════════════════════════
+   HOME PAGE — AWWWARDS LEVEL
+   Cinematic · Scroll-driven · Premium
+   ═══════════════════════════════════════ */
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 80px;
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  will-change: transform;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 20, 37, 0.15) 0%,
+    rgba(8, 20, 37, 0.45) 40%,
+    rgba(8, 20, 37, 0.92) 100%
+  );
+}
+
+.hero__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  will-change: transform, opacity, filter;
+}
+
+.hero__tag {
+  margin-bottom: 28px;
+}
+
+.hero__title {
+  margin-bottom: 28px;
+  perspective: 600px;
+}
+
+.title-line-wrap {
+  display: block;
+  overflow: hidden;
+}
+
+.title-line {
+  display: block;
+  will-change: transform;
+}
+
+.title-line--accent {
+  background: linear-gradient(135deg, var(--primary) 0%, #ff8a84 50%, var(--primary-container) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero__sub {
+  max-width: 500px;
+  margin-bottom: 44px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn--lg {
+  padding: 18px 36px;
+  font-size: 0.875rem;
+}
+
+/* Scroll indicator */
+.hero__scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero__scroll-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  animation: scrollBounce 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  box-shadow: 0 0 12px rgba(255, 179, 174, 0.4);
+}
+
+.hero__scroll span {
+  font-family: var(--font-label);
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  opacity: 0.4;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(12px); opacity: 0.3; }
+}
+
+/* ═══ PROTOCOL ═══ */
+.protocol {
+  perspective: 1000px;
+}
+
+.protocol__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.protocol__text {
+  will-change: transform, opacity;
+}
+
+.protocol__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  perspective: 800px;
+}
+
+.stat-card {
+  background: var(--surface-container-low);
+  padding: 32px;
+  border-radius: var(--radius-xl);
+  will-change: transform, opacity;
+  transition: transform var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+  transform-style: preserve-3d;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px) rotateY(-2deg);
+  box-shadow: var(--shadow-ambient);
+}
+
+.stat-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background: var(--surface-container-highest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+
+.stat-card__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.stat-card__desc {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--on-surface-variant);
+}
+
+.stat-card--highlight {
+  background: linear-gradient(135deg, var(--primary-container) 0%, rgba(118, 38, 37, 0.5) 100%);
+  border: 1px solid rgba(255, 179, 174, 0.1);
+}
+
+.stat-card__code {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--primary);
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* ═══ FLOATING PRODUCT IMAGES ═══ */
+.product-float {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--surface-container-lowest);
+}
+
+.product-float__sticky {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.product-float__text {
+  position: relative;
+  z-index: 3;
+  max-width: 500px;
+}
+
+.product-float__img {
+  position: absolute;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-ambient);
+  will-change: transform, opacity;
+  z-index: 2;
+  filter: brightness(0.9) saturate(1.1);
+}
+
+.product-float__img--1 {
+  width: 280px;
+  top: 10%;
+  right: 8%;
+}
+
+.product-float__img--2 {
+  width: 220px;
+  bottom: 15%;
+  right: 25%;
+}
+
+.product-float__img--3 {
+  width: 320px;
+  bottom: 8%;
+  right: 2%;
+}
+
+/* ═══ HORIZONTAL SCROLL SHOWCASE ═══ */
+.hscroll {
+  overflow: hidden;
+  background: var(--surface-container);
+}
+
+.hscroll__track {
+  display: flex;
+  flex-wrap: nowrap;
+  will-change: transform;
+}
+
+.hscroll__panel {
+  flex-shrink: 0;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 80px;
+}
+
+.hscroll__intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hscroll__intro-content {
+  max-width: 500px;
+}
+
+/* Horizontal scroll product card */
+.hscroll-card {
+  gap: 64px;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+.hscroll-card__img {
+  width: 400px;
+  min-width: 400px;
+  height: 480px;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.hscroll-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85) saturate(1.1);
+  transition: transform 0.6s var(--ease-out);
+}
+
+.hscroll-card:hover .hscroll-card__img img {
+  transform: scale(1.06);
+}
+
+.hscroll-card__content {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product-num {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 1;
+  -webkit-text-stroke: 2px var(--outline-variant);
+  color: transparent;
+  opacity: 0.25;
+}
+
+.hscroll-card__stats {
+  display: flex;
+  gap: 40px;
+  padding: 20px 0;
+}
+
+.hscroll-card__stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hscroll-card__stats strong {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* ═══ IMAGE REVEAL (CURTAIN WIPE) ═══ */
+.img-reveal {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+}
+
+.img-reveal__overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--surface);
+  z-index: 2;
+  transform-origin: right center;
+}
+
+.img-reveal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  will-change: transform;
+}
+
+.showcase__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.showcase__col {
+  display: flex;
+  flex-direction: column;
+}
+
+.showcase__col--offset {
+  margin-top: 120px;
+}
+
+.showcase__col .img-reveal {
+  height: 400px;
+}
+
+/* ═══ STATS ═══ */
+.stats__grid {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.stats__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.counter-num {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 900;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.stats__label {
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  opacity: 0.6;
+}
+
+/* ═══ CTA BANNER ═══ */
+.cta-banner {
+  position: relative;
+  padding: 160px 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.cta-banner__bg {
+  position: absolute;
+  inset: -60px 0;
+}
+
+.cta-banner__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.cta-banner__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 20, 37, 0.82);
+  backdrop-filter: blur(2px);
+}
+
+.cta-banner__content {
+  position: relative;
+  z-index: 2;
+  will-change: transform, opacity;
+}
+
+.cta-banner__actions {
+  margin-top: 44px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 900px) {
+  .protocol__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .product-float__img {
+    display: none;
+  }
+
+  .product-float__sticky {
+    min-height: 50vh;
+  }
+
+  .hscroll {
+    overflow: visible;
+    background: var(--surface-container);
+    padding: 80px 0;
+  }
+
+  .hscroll__track {
+    flex-direction: column;
+    gap: 64px;
+  }
+
+  .hscroll__panel {
+    width: 100%;
+    min-height: auto;
+    padding: 0 20px;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .hscroll-card__img {
+    width: 100%;
+    min-width: unset;
+    height: 280px;
+  }
+
+  .hscroll-card__content {
+    max-width: 100%;
+  }
+
+  .product-num {
+    font-size: 3rem;
+  }
+
+  .showcase__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase__col--offset {
+    margin-top: 0;
+  }
+
+  .showcase__col .img-reveal {
+    height: 280px;
+  }
+
+  .stats__grid {
+    gap: 40px;
+  }
+
+  .counter-num {
+    font-size: 2.5rem;
+  }
+
+  .cta-banner {
+    padding: 100px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-bottom: 60px;
+    align-items: center;
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero__actions .magnetic {
+    width: 100%;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hscroll__panel {
+    padding: 0 16px;
+  }
+}
