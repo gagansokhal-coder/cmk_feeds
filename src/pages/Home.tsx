@@ -451,7 +451,7 @@ export default function Home() {
           <div className="hero__actions" ref={heroActionsRef}>
             <MagneticButton>
               <Link to="/products" className="btn btn--primary btn--lg">
-                <span>Explore Formulas</span>
+                <span>Explore Products</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M7 17L17 7M17 7H7M17 7v10" />
                 </svg>
@@ -592,16 +592,16 @@ export default function Home() {
                 </div>
                 <div className="hscroll-card__actions" style={{ display: 'flex', gap: 12, marginTop: 24 }}>
                   <MagneticButton>
-                    <button 
-                      onClick={() => handleOrder(product)} 
+                    <button
+                      onClick={() => handleOrder(product)}
                       className="btn btn--primary btn--sm"
                     >
                       Order Now
                     </button>
                   </MagneticButton>
                   <MagneticButton>
-                    <button 
-                      onClick={() => handleInquiryClick(product)} 
+                    <button
+                      onClick={() => handleInquiryClick(product)}
                       className="btn btn--outline btn--sm"
                     >
                       Enquiry
@@ -702,9 +702,9 @@ export default function Home() {
       {/* ═══════ BOTTOM MARQUEE ═══════ */}
       <Marquee text="The Gold Standard in Cattle Nutrition" variant="muted" separator="✦" />
 
-      <InquiryModal 
-        isOpen={isInquiryOpen} 
-        onClose={() => setIsInquiryOpen(false)} 
+      <InquiryModal
+        isOpen={isInquiryOpen}
+        onClose={() => setIsInquiryOpen(false)}
         product={selectedProduct}
         onSend={handleInquirySend}
       />
