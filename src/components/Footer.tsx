@@ -28,8 +28,8 @@ export default function Footer() {
             <div className="footer__col">
               <h4 className="footer__col-title">Information</h4>
               <Link to="/sustainability" className="footer__link">Our Environment</Link>
-              <Link to="/" className="footer__link">Terms of Service</Link>
-              <Link to="/" className="footer__link">Privacy Policy</Link>
+              <Link to="/terms-conditions" className="footer__link">Terms of Service</Link>
+              <Link to="/privacy-policy" className="footer__link">Privacy Policy</Link>
             </div>
             <div className="footer__col">
               <h4 className="footer__col-title">Get in Touch</h4>

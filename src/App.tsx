@@ -15,6 +15,8 @@ import Home from './pages/Home'
 import Products from './pages/Products'
 import Sustainability from './pages/Sustainability'
 import Contact from './pages/Contact'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsConditions from './pages/TermsConditions'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -58,6 +60,8 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/sustainability" element={<Sustainability />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-conditions" element={<TermsConditions />} />
           </Routes>
         </PageTransition>
       </main>
