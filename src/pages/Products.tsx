@@ -1,42 +1,44 @@
-import { useEffect, useRef, useLayoutEffect } from 'react'
+import { useEffect, useRef, useLayoutEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import RevealOnScroll from '../components/RevealOnScroll'
 import SplitText from '../components/SplitText'
 import MagneticButton from '../components/MagneticButton'
+import InquiryModal from '../components/InquiryModal'
+import { getWhatsAppUrl, ProductData } from '../utils/whatsapp'
 import './Products.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const products = [
+const products: ProductData[] & { badge: string; badgeClass: string }[] = [
   {
     name: 'The Gilded Grain',
-    desc: 'A precision-milled blend of heritage barley and cold-pressed oils. Engineered for rapid marbling and superior coat sheen.',
+    desc: 'A high-quality mix of barley and oils. Made for better growth and a shiny coat.',
     protein: '18.5%',
     energy: '13.2 MJ',
     badge: 'Best Seller',
     badgeClass: '',
   },
   {
-    name: 'Pasture Prime+',
-    desc: 'Micro-pelleted nutrients designed to complement native forage. The foundation of the agrarian legacy.',
+    name: 'Pasture Prime',
+    desc: 'Small nutrient pellets that work well with natural grass. The start of a great farm.',
     protein: '15.8%',
     energy: '12.6 MJ',
     badge: 'Foundation',
     badgeClass: 'badge--green',
   },
   {
-    name: 'The Foundation Pellet',
-    desc: 'A high-protein nursery formula for the crucial first 100 days. Fortified with chelated minerals for skeletal structural integrity.',
+    name: 'Young Herd Mix',
+    desc: 'High-protein food for the first 100 days. With minerals for strong bones.',
     protein: '22.1%',
     energy: '14.8 MJ',
-    badge: 'Nursery',
+    badge: 'Young Herd',
     badgeClass: 'badge--amber',
   },
   {
-    name: 'Oxblood Vitality Blend',
-    desc: 'Our most powerful performance finisher. Infused with organic molasses and iron-rich particulates for maximum mass retention.',
+    name: 'Power Growth Blend',
+    desc: 'Our strongest feed for finishing. With healthy molasses and minerals to help cattle keep their weight.',
     protein: '20.4%',
     energy: '15.4 MJ',
     badge: 'Performance',
@@ -48,6 +50,10 @@ export default function Products() {
   const heroRef = useRef<HTMLDivElement>(null)
   const heroImgRef = useRef<HTMLImageElement>(null)
   const bespokeImgRef = useRef<HTMLDivElement>(null)
+
+  // WhatsApp Logic State
+  const [selectedProduct, setSelectedProduct] = useState<ProductData | null>(null)
+  const [isInquiryOpen, setIsInquiryOpen] = useState(false)
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -109,6 +115,23 @@ export default function Products() {
     return () => ctx.revert()
   }, [])
 
+  const handleOrder = (product: ProductData) => {
+    const url = getWhatsAppUrl('ORDER', product)
+    window.open(url, '_blank')
+  }
+
+  const handleInquiryClick = (product: ProductData) => {
+    setSelectedProduct(product)
+    setIsInquiryOpen(true)
+  }
+
+  const handleInquirySend = (message: string) => {
+    if (selectedProduct) {
+      const url = getWhatsAppUrl('INQUIRY', selectedProduct, message)
+      window.open(url, '_blank')
+    }
+  }
+
   return (
     <div className="page-products">
       {/* ═══ HERO ═══ */}
@@ -122,12 +145,11 @@ export default function Products() {
           <RevealOnScroll>
             <span className="label-tag">The Collection</span>
             <SplitText as="h1" className="display-lg" delay={0.2}>
-              Nutritional Excellence.
+              High-Quality Feed.
             </SplitText>
             <p className="body-lg" style={{ marginTop: 24, maxWidth: 560 }}>
-              Discover our collection of scientifically advanced feed formulas,
-              designed for the world's most prestigious livestock lineages. Every
-              grain is a commitment to legacy.
+              Explore our collection of advanced feed mixes.
+              We build them for top-quality herds. Every grain counts.
             </p>
           </RevealOnScroll>
         </div>
@@ -138,7 +160,7 @@ export default function Products() {
         <div className="container">
           <div className="products-list__grid">
             {products.map((product, i) => (
-              <div className="product-detail-card" key={i}>
+              <div className="product-detail-card" key={product.name}>
                 <div className="product-detail-card__img">
                   <img src="/images/feed-product.png" alt={product.name} />
                 </div>
@@ -158,11 +180,25 @@ export default function Products() {
                       <span className="product-stat__value">{product.energy}</span>
                     </div>
                   </div>
-                  <MagneticButton>
-                    <Link to="/contact" className="btn btn--primary btn--sm">
-                      Order Now
-                    </Link>
-                  </MagneticButton>
+                  
+                  <div className="product-detail-card__actions">
+                    <MagneticButton style={{ flex: 1 }}>
+                      <button 
+                        onClick={() => handleOrder(product)} 
+                        className="btn btn--primary btn--sm btn--full"
+                      >
+                        Order Now
+                      </button>
+                    </MagneticButton>
+                    <MagneticButton style={{ flex: 1 }}>
+                      <button 
+                        onClick={() => handleInquiryClick(product)} 
+                        className="btn btn--outline btn--sm btn--full"
+                      >
+                        Enquiry
+                      </button>
+                    </MagneticButton>
+                  </div>
                 </div>
               </div>
             ))}
@@ -175,22 +211,21 @@ export default function Products() {
         <div className="container">
           <div className="bespoke__card">
             <RevealOnScroll className="bespoke__text">
-              <span className="label-tag">Bespoke Rations</span>
+              <span className="label-tag">Custom Feed</span>
               <h2 className="headline-lg" style={{ marginTop: 16 }}>
-                Bespoke Estate Rations
+                Custom Feed for Your Farm
               </h2>
               <p className="body-lg" style={{ marginTop: 16 }}>
-                For elite herds exceeding 500 head, our nutritionists can
-                craft a custom ledger based on your specific soil and water
-                profile. Invest in a truly unique genetic expression.
+                For herds larger than 500 animals, our experts can make
+                a custom mix just for your farm's soil and water.
+                Give your cattle exactly what they need.
               </p>
               <p className="bespoke__quote">
-                &ldquo;The intersection of genetic potential and nutritional
-                artistry.&rdquo;
+                &ldquo;The best nutrition for the best cattle.&rdquo;
               </p>
               <MagneticButton style={{ marginTop: 32 }}>
                 <Link to="/contact" className="btn btn--primary">
-                  Request Custom Blend
+                  Ask for a Custom Mix
                 </Link>
               </MagneticButton>
             </RevealOnScroll>
@@ -204,6 +239,13 @@ export default function Products() {
           </div>
         </div>
       </section>
+
+      <InquiryModal 
+        isOpen={isInquiryOpen} 
+        onClose={() => setIsInquiryOpen(false)} 
+        product={selectedProduct}
+        onSend={handleInquirySend}
+      />
     </div>
   )
 }

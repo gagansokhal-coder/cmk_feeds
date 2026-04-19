@@ -1,12 +1,35 @@
-import { useEffect, useRef, useLayoutEffect } from 'react'
+import { useEffect, useRef, useLayoutEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import MagneticButton from '../components/MagneticButton'
 import Marquee from '../components/Marquee'
+import InquiryModal from '../components/InquiryModal'
+import { getWhatsAppUrl, ProductData } from '../utils/whatsapp'
 import './Home.css'
 
 gsap.registerPlugin(ScrollTrigger)
+
+const featuredProducts: ProductData[] = [
+  {
+    name: 'Heritage Blend',
+    desc: 'The base for a healthy herd. Made with high-quality barley and oils for better growth and a shiny coat.',
+    protein: '18.5%',
+    energy: '13.2 MJ',
+  },
+  {
+    name: 'Prime Lab Elite',
+    desc: 'Made to help cattle use food better. Small pellets that work well with natural grass.',
+    protein: '22.1%',
+    energy: '14.8 MJ',
+  },
+  {
+    name: 'Winter Reserve',
+    desc: 'High-fat mix to help cattle stay strong in cold weather. Includes healthy molasses and minerals.',
+    protein: '16.8%',
+    energy: '15.4 MJ',
+  },
+]
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -35,6 +58,10 @@ export default function Home() {
   // Image reveal refs
   const revealImg1 = useRef<HTMLDivElement>(null)
   const revealImg2 = useRef<HTMLDivElement>(null)
+
+  // WhatsApp Logic State
+  const [selectedProduct, setSelectedProduct] = useState<ProductData | null>(null)
+  const [isInquiryOpen, setIsInquiryOpen] = useState(false)
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -367,6 +394,23 @@ export default function Home() {
     return () => ctx.revert()
   }, [])
 
+  const handleOrder = (product: ProductData) => {
+    const url = getWhatsAppUrl('ORDER', product)
+    window.open(url, '_blank')
+  }
+
+  const handleInquiryClick = (product: ProductData) => {
+    setSelectedProduct(product)
+    setIsInquiryOpen(true)
+  }
+
+  const handleInquirySend = (message: string) => {
+    if (selectedProduct) {
+      const url = getWhatsAppUrl('INQUIRY', selectedProduct, message)
+      window.open(url, '_blank')
+    }
+  }
+
   return (
     <div className="page-home">
 
@@ -399,8 +443,8 @@ export default function Home() {
           </h1>
 
           <p className="hero__sub body-lg" ref={heroSubRef}>
-            Cattle nutrition engineered for the elite producer,
-            where heritage meets the precision of a laboratory.
+            The best food for your cattle. We combine long-time farm experience
+            with modern science.
           </p>
 
           <div className="hero__actions" ref={heroActionsRef}>
@@ -414,7 +458,7 @@ export default function Home() {
             </MagneticButton>
             <MagneticButton>
               <Link to="/contact" className="btn btn--ghost btn--lg">
-                Contact the Estate
+                Talk to Us
               </Link>
             </MagneticButton>
           </div>
@@ -434,14 +478,13 @@ export default function Home() {
         <div className="container">
           <div className="protocol__grid">
             <div className="protocol__text">
-              <span className="label-tag">The CMK Protocol</span>
+              <span className="label-tag">The CMK Way</span>
               <h2 className="display-md" style={{ marginTop: 20 }}>
-                Beyond the bag<br />lies a philosophy.
+                More than just feed.
               </h2>
               <p className="body-lg" style={{ marginTop: 24 }}>
-                Every grain is tested for bio-availability, ensuring your herd
-                receives not just calories, but the building blocks of
-                excellence. Obsessive refinement is our standard.
+                We test every grain to make sure your cattle get exactly what
+                they need to grow strong and healthy. We never stop improving.
               </p>
             </div>
 
@@ -452,10 +495,9 @@ export default function Home() {
                     <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0-4h18" />
                   </svg>
                 </div>
-                <h3 className="stat-card__title">Laboratory Verified</h3>
+                <h3 className="stat-card__title">Tested in Labs</h3>
                 <p className="stat-card__desc">
-                  Every batch undergoes 14-point spectral analysis for purity
-                  and bio-availability.
+                  Every batch is tested 14 ways to ensure it is pure and healthy.
                 </p>
               </div>
 
@@ -466,18 +508,18 @@ export default function Home() {
                     <path d="M12 6v6l4 2" />
                   </svg>
                 </div>
-                <h3 className="stat-card__title">Regenerative Roots</h3>
+                <h3 className="stat-card__title">Healthy Soil</h3>
                 <p className="stat-card__desc">
-                  Sustainable sourcing from certified heritage estates
-                  practicing regenerative agriculture.
+                  We get our ingredients from farms that take care of the
+                  soil and the earth.
                 </p>
               </div>
 
               <div className="stat-card stat-card--highlight">
                 <span className="stat-card__code">#882-GOLD</span>
                 <p className="stat-card__desc">
-                  Rich in essential minerals and custom-blended for winter
-                  peak performance.
+                  Full of important minerals. Specially made to keep
+                  cattle healthy in winter.
                 </p>
               </div>
             </div>
@@ -490,8 +532,8 @@ export default function Home() {
         <div className="product-float__sticky">
           <div className="container">
             <div className="product-float__text">
-              <span className="label-tag">The Collection</span>
-              <h2 className="display-md">Feed that moves<br />with purpose.</h2>
+              <span className="label-tag">Our Collection</span>
+              <h2 className="display-md">Feed built for<br />better growth.</h2>
             </div>
           </div>
 
@@ -523,72 +565,48 @@ export default function Home() {
           {/* Intro panel */}
           <div className="hscroll__panel hscroll__intro">
             <div className="hscroll__intro-content">
-              <span className="label-tag">Featured Formulations</span>
+              <span className="label-tag">Popular Mixes</span>
               <h2 className="display-md" style={{ marginTop: 16 }}>
-                Scroll to explore<br />our collection →
+                Slide to explore<br />our feed →
               </h2>
             </div>
           </div>
 
-          {/* Product 1 */}
-          <div className="hscroll__panel hscroll-card">
-            <div className="hscroll-card__img">
-              <img src="/images/feed-product.png" alt="Heritage Blend" />
-            </div>
-            <div className="hscroll-card__content">
-              <span className="product-num">01</span>
-              <h3 className="headline-lg">Heritage Blend</h3>
-              <p className="body-md">
-                The foundation of every champion herd. Precision-milled heritage barley
-                and cold-pressed oils for rapid marbling and superior coat sheen.
-              </p>
-              <div className="hscroll-card__stats">
-                <div><span className="label-sm">Protein</span><strong>18.5%</strong></div>
-                <div><span className="label-sm">Energy</span><strong>13.2 MJ</strong></div>
+          {/* Map through featured products */}
+          {featuredProducts.map((product, i) => (
+            <div className="hscroll__panel hscroll-card" key={product.name}>
+              <div className="hscroll-card__img">
+                <img src="/images/feed-product.png" alt={product.name} />
               </div>
-              <Link to="/products" className="btn btn--outline btn--sm">View Details →</Link>
-            </div>
-          </div>
-
-          {/* Product 2 */}
-          <div className="hscroll__panel hscroll-card">
-            <div className="hscroll-card__img">
-              <img src="/images/feed-product.png" alt="Prime Lab Elite" />
-            </div>
-            <div className="hscroll-card__content">
-              <span className="product-num">02</span>
-              <h3 className="headline-lg">Prime Lab Elite</h3>
-              <p className="body-md">
-                Scientifically optimized for maximum metabolic efficiency.
-                Micro-pelleted nutrients complement native forage.
-              </p>
-              <div className="hscroll-card__stats">
-                <div><span className="label-sm">Protein</span><strong>22.1%</strong></div>
-                <div><span className="label-sm">Energy</span><strong>14.8 MJ</strong></div>
+              <div className="hscroll-card__content">
+                <span className="product-num">0{i + 1}</span>
+                <h3 className="headline-lg">{product.name}</h3>
+                <p className="body-md">{product.desc}</p>
+                <div className="hscroll-card__stats">
+                  <div><span className="label-sm">Protein</span><strong>{product.protein}</strong></div>
+                  <div><span className="label-sm">Energy</span><strong>{product.energy}</strong></div>
+                </div>
+                <div className="hscroll-card__actions" style={{ display: 'flex', gap: 12, marginTop: 24 }}>
+                  <MagneticButton>
+                    <button 
+                      onClick={() => handleOrder(product)} 
+                      className="btn btn--primary btn--sm"
+                    >
+                      Order Now
+                    </button>
+                  </MagneticButton>
+                  <MagneticButton>
+                    <button 
+                      onClick={() => handleInquiryClick(product)} 
+                      className="btn btn--outline btn--sm"
+                    >
+                      Enquiry
+                    </button>
+                  </MagneticButton>
+                </div>
               </div>
-              <Link to="/products" className="btn btn--outline btn--sm">View Details →</Link>
             </div>
-          </div>
-
-          {/* Product 3 */}
-          <div className="hscroll__panel hscroll-card">
-            <div className="hscroll-card__img">
-              <img src="/images/feed-product.png" alt="Winter Reserve" />
-            </div>
-            <div className="hscroll-card__content">
-              <span className="product-num">03</span>
-              <h3 className="headline-lg">Winter Reserve</h3>
-              <p className="body-md">
-                Essential fat-dense blend for cold weather endurance. Infused with
-                organic molasses and iron-rich particulates.
-              </p>
-              <div className="hscroll-card__stats">
-                <div><span className="label-sm">Protein</span><strong>16.8%</strong></div>
-                <div><span className="label-sm">Energy</span><strong>15.4 MJ</strong></div>
-              </div>
-              <Link to="/products" className="btn btn--outline btn--sm">View Details →</Link>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -605,8 +623,8 @@ export default function Home() {
                 <img src="/images/ranch-landscape.png" alt="CMK Heritage Ranch" />
               </div>
               <p className="body-lg" style={{ marginTop: 28 }}>
-                Our 2,400-acre heritage ranch in Lancaster County serves as both
-                a testing ground and a living testament to regenerative agriculture.
+                Our 2,400-acre family ranch is where we test our feed and
+                show how to farm responsibly.
               </p>
             </div>
 
@@ -616,8 +634,8 @@ export default function Home() {
                 <img src="/images/laboratory.png" alt="CMK Laboratory" />
               </div>
               <p className="body-lg" style={{ marginTop: 28 }}>
-                Our state-of-the-art laboratory ensures every formula meets the
-                exacting standards our heritage demands.
+                Our modern lab makes sure every bag of feed is the
+                best quality possible.
               </p>
             </div>
           </div>
@@ -630,19 +648,19 @@ export default function Home() {
           <div className="stats__grid">
             <div className="stats__item">
               <span className="counter-num" data-target="62" data-suffix="">0</span>
-              <span className="stats__label">Years of Heritage</span>
+              <span className="stats__label">Years of History</span>
             </div>
             <div className="stats__item">
               <span className="counter-num" data-target="14" data-suffix="-pt">0</span>
-              <span className="stats__label">Lab Analysis</span>
+              <span className="stats__label">Quality Tests</span>
             </div>
             <div className="stats__item">
               <span className="counter-num" data-target="98" data-suffix="%">0</span>
-              <span className="stats__label">Waste Diversion</span>
+              <span className="stats__label">Waste Saved</span>
             </div>
             <div className="stats__item">
               <span className="counter-num" data-target="6" data-suffix="">0</span>
-              <span className="stats__label">Continents Served</span>
+              <span className="stats__label">Places We Ship</span>
             </div>
           </div>
         </div>
@@ -656,20 +674,20 @@ export default function Home() {
         </div>
         <div className="container">
           <div className="cta-banner__content">
-            <h2 className="display-md">Ready to elevate<br />your herd?</h2>
+            <h2 className="display-md">Ready to help<br />your herd grow?</h2>
             <p className="body-lg" style={{ maxWidth: 540, margin: '20px auto 0' }}>
-              Join the movement toward heritage-grade nutrition and planetary
-              stewardship. Your ranch is your legacy.
+              Choose better food and better farming for a better future.
+              Your farm is your legacy.
             </p>
             <div className="cta-banner__actions">
               <MagneticButton>
                 <Link to="/contact" className="btn btn--primary btn--lg">
-                  Request a Consultation
+                  Talk to Us
                 </Link>
               </MagneticButton>
               <MagneticButton>
                 <Link to="/sustainability" className="btn btn--ghost btn--lg">
-                  Our Stewardship
+                  Our Environment
                 </Link>
               </MagneticButton>
             </div>
@@ -680,6 +698,12 @@ export default function Home() {
       {/* ═══════ BOTTOM MARQUEE ═══════ */}
       <Marquee text="The Gold Standard in Cattle Nutrition" variant="muted" separator="✦" />
 
+      <InquiryModal 
+        isOpen={isInquiryOpen} 
+        onClose={() => setIsInquiryOpen(false)} 
+        product={selectedProduct}
+        onSend={handleInquirySend}
+      />
     </div>
   )
 }
