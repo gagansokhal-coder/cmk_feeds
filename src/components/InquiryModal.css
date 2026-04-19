@@ -1,0 +1,93 @@
+.inquiry-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 17, 14, 0.88);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2100;
+  padding: var(--space-md);
+}
+
+.inquiry-modal {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(27, 23, 19, 0.95);
+  border: 1.5px solid rgba(126, 181, 214, 0.2);
+  border-radius: var(--radius-2xl);
+  padding: 40px;
+  position: relative;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+}
+
+.inquiry-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  color: var(--on-surface-variant);
+  transition: color 0.2s ease, transform 0.2s ease;
+  opacity: 0.6;
+}
+
+.inquiry-close:hover {
+  color: var(--primary);
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+.inquiry-header .label-tag {
+  font-size: 0.7rem;
+}
+
+.inquiry-body {
+  margin-top: 32px;
+}
+
+.inquiry-field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inquiry-field textarea {
+  width: 100%;
+  min-height: 140px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(126, 181, 214, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  resize: none;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.inquiry-field textarea:focus {
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+}
+
+.inquiry-footer {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inquiry-note {
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  color: var(--on-surface-variant);
+  text-align: center;
+  opacity: 0.5;
+  line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+  .inquiry-modal {
+    padding: 32px 24px;
+  }
+}

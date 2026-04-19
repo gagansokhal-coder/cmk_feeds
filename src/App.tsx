@@ -9,6 +9,7 @@ import Footer from './components/Footer'
 import PageTransition from './components/PageTransition'
 import ScrollToTop from './components/ScrollToTop'
 import CustomCursor from './components/CustomCursor'
+import WhatsAppFloat from './components/WhatsAppFloat'
 
 import Home from './pages/Home'
 import Products from './pages/Products'
@@ -61,6 +62,7 @@ function App() {
         </PageTransition>
       </main>
       <Footer />
+      <WhatsAppFloat />
     </>
   )
 }
