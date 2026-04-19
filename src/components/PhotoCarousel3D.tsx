@@ -98,7 +98,7 @@ export default function PhotoCarousel3D() {
             <div 
               key={i} 
               className={`carousel-3d__slide ${i === index ? 'carousel-3d__slide--active' : ''}`}
-              ref={el => slidesRef.current[i] = el}
+              ref={el => { slidesRef.current[i] = el }}
             >
               <div className="carousel-3d__inner">
                 <img src={slide.image} alt={slide.title} className="carousel-3d__img" />
