@@ -16,7 +16,7 @@ export default function Footer() {
               <br />
               Farmers for Farmers. Since 1962.
               <br />
-              <span className="footer__contact">1 Bnw Hakmabad, Rajasthan · 099296 96199</span>
+              <span className="footer__contact">1 Bnw Hakmabad, Rajasthan · +91 92167 96805</span>
             </p>
           </div>
 

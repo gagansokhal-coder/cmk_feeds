@@ -89,7 +89,7 @@ export default function Contact() {
                   </div>
                   <div className="contact-detail__item">
                     <span className="contact-detail__label">Phone</span>
-                    <span className="contact-detail__value">099296 96199</span>
+                    <span className="contact-detail__value">+91 92167 96805</span>
                   </div>
                   <div className="contact-detail__item">
                     <span className="contact-detail__label">Email</span>

@@ -4,8 +4,9 @@
  */
 
 const WHATSAPP_NUMBERS = {
-  ORDER: '919929696199',
-  INQUIRY: '919929696199',
+  ORDER: '919216796805',
+  INQUIRY: '919799762014',
+  CONTACT: '919216796805',
 };
 
 export type ProductData = {
@@ -47,7 +48,7 @@ export function getGeneralWhatsAppUrl(data: {
   herdSize: string;
   message: string;
 }): string {
-  const number = WHATSAPP_NUMBERS.INQUIRY;
+  const number = WHATSAPP_NUMBERS.CONTACT;
   const body = `Hello CMK Feed! 👋\n\n*New Inquiry from Website*\n\n*Name:* ${data.fullName}\n*Email:* ${data.email}\n*Farm/Ranch:* ${data.ranch || 'N/A'}\n*Herd Size:* ${data.herdSize}\n\n*Message:* ${data.message}`;
   
   return `https://wa.me/${number}?text=${encodeURIComponent(body)}`;

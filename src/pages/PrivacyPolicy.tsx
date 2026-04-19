@@ -137,7 +137,7 @@ export default function PrivacyPolicy() {
                   <p>If you have any questions about this Privacy Policy, You can contact us:</p>
                   <ul>
                     <li>By visiting our website: <a href="https://www.cmkfeed.in" target="_blank" rel="noopener noreferrer">https://www.cmkfeed.in/</a></li>
-                    <li>By phone: +91 99296 96199</li>
+                    <li>By phone: +91 92167 96805</li>
                   </ul>
                 </section>
               </RevealOnScroll>
