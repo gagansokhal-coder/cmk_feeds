@@ -93,13 +93,69 @@
   width: 100%;
 }
 
-.navbar__link--active {
-  color: var(--primary);
-}
-
 .navbar__link--active::after {
   width: 100%;
   background: var(--primary);
+}
+
+/* Dropdown */
+.navbar__link-wrapper {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-arrow {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 0.7rem;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.navbar__link-wrapper--has-dropdown:hover .dropdown-arrow {
+  transform: rotate(180deg);
+  color: var(--primary);
+}
+
+.navbar__dropdown {
+  position: absolute;
+  top: calc(100% + 15px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  min-width: 200px;
+  padding: 12px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--duration-normal) var(--ease-out);
+  z-index: 100;
+}
+
+.navbar__link-wrapper--has-dropdown:hover .navbar__dropdown {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(-50%) translateY(0);
+}
+
+.navbar__dropdown-link {
+  font-family: var(--font-label);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  transition: all var(--duration-fast) ease;
+  white-space: nowrap;
+}
+
+.navbar__dropdown-link:hover {
+  background: rgba(126, 181, 214, 0.1);
+  color: var(--primary);
+  transform: translateX(4px);
 }
 
 /* CTA Button in Nav */

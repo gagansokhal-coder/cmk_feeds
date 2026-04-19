@@ -1,0 +1,122 @@
+.carousel-3d {
+  padding: var(--space-5xl) 0;
+  background-color: var(--surface-container-lowest);
+  perspective: 2000px;
+  overflow: hidden;
+}
+
+.carousel-3d__container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 600px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+}
+
+@media (max-width: 768px) {
+  .carousel-3d__container {
+    height: 400px;
+  }
+}
+
+.carousel-3d__slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s var(--ease-out);
+}
+
+.carousel-3d__slide--active {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 10;
+}
+
+.carousel-3d__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-ambient);
+  transform: translateZ(0);
+}
+
+.carousel-3d__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out);
+}
+
+.carousel-3d__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--space-2xl);
+  color: white;
+}
+
+.carousel-3d__content {
+  transform: translateZ(50px);
+}
+
+.carousel-3d__controls {
+  margin-top: var(--space-xl);
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-nav-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--surface-container-high);
+  color: var(--on-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--duration-fast) var(--ease-out);
+  border: 1px solid rgba(126, 181, 214, 0.2);
+}
+
+.carousel-nav-btn:hover {
+  background: var(--primary);
+  color: var(--on-primary);
+  transform: scale(1.1);
+}
+
+.carousel-nav-btn:active {
+  transform: scale(0.95);
+}
+
+.carousel-3d__dots {
+  display: flex;
+  gap: 12px;
+}
+
+.carousel-3d__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--outline-variant);
+  transition: all var(--duration-fast) var(--ease-out);
+  cursor: pointer;
+}
+
+.carousel-3d__dot--active {
+  background: var(--primary);
+  transform: scale(1.5);
+  box-shadow: 0 0 10px var(--primary);
+}

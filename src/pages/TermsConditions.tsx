@@ -57,7 +57,7 @@ export default function TermsConditions() {
                   <h3 className="title-lg">Definitions</h3>
                   <ul>
                     <li><strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control with a party.</li>
-                    <li><strong>Company</strong> refers to CMK Feed, Rajasthan, India.</li>
+                    <li><strong>Company</strong> refers to CMK Feed, 1 Bnw Hakmabad, Rajasthan, India.</li>
                     <li><strong>Service</strong> refers to the Website.</li>
                     <li><strong>Terms and Conditions</strong> (also referred to as "Terms") mean these Terms and Conditions.</li>
                     <li><strong>Website</strong> refers to CMK Feed, accessible from <a href="https://www.cmkfeed.in" target="_blank" rel="noopener noreferrer">https://www.cmkfeed.in/</a></li>
@@ -134,7 +134,7 @@ export default function TermsConditions() {
                   <p>If you have any questions about these Terms and Conditions, You can contact us:</p>
                   <ul>
                     <li>By visiting our website: <a href="https://www.cmkfeed.in" target="_blank" rel="noopener noreferrer">https://www.cmkfeed.in/</a></li>
-                    <li>By phone: +91 97997 62014</li>
+                    <li>By phone: +91 99296 96199</li>
                   </ul>
                 </section>
               </RevealOnScroll>

@@ -194,37 +194,50 @@
   min-height: 100px;
 }
 
-.form-group--select select {
-  width: 100%;
-  padding: 16px 0 8px;
-  font-size: 0.9375rem;
-  color: var(--on-surface);
-  background: transparent;
-  border: none;
-  border-bottom: 1.5px solid rgba(126, 181, 214, 0.2);
-  cursor: pointer;
-  appearance: none;
-  font-family: var(--font-label);
-}
-
-.form-group--select select:focus {
-  border-bottom-color: var(--secondary);
-  outline: none;
-}
-
 .form-group--select {
   position: relative;
 }
 
 .form-group--select::after {
-  content: '▾';
+  content: '▼';
   position: absolute;
-  right: 0;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--on-surface-variant);
+  color: var(--primary);
   pointer-events: none;
-  font-size: 0.875rem;
+  font-size: 0.65rem;
+  transition: transform var(--duration-fast) ease;
+}
+
+.form-group--select:focus-within::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.form-group--select select {
+  width: 100%;
+  padding: 16px 32px 8px 0;
+  font-size: 0.9375rem;
+  color: var(--on-surface);
+  background-color: transparent;
+  border: none;
+  border-bottom: 1.5px solid rgba(126, 181, 214, 0.2);
+  cursor: pointer;
+  appearance: none;
+  font-family: var(--font-label);
+  transition: border-color var(--duration-fast) ease;
+}
+
+/* Ensure the dropdown list itself is visible on dark backgrounds */
+.form-group--select select option {
+  background-color: var(--surface-container-high);
+  color: var(--on-surface);
+  padding: 12px;
+}
+
+.form-group--select select:focus {
+  border-bottom-color: var(--secondary);
+  outline: none;
 }
 
 .btn--success {

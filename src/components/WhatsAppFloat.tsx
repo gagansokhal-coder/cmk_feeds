@@ -25,7 +25,7 @@ export default function WhatsAppFloat() {
     return () => ctx.revert()
   }, [])
 
-  const whatsappNumber = '919799762014'
+  const whatsappNumber = '919929696199'
   const message = 'Hello! I am visiting your website and have a general inquiry. How can you help me?'
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
 

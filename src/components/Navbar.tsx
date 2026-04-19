@@ -40,15 +40,28 @@ export default function Navbar() {
 
           <div className="navbar__links">
             {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`navbar__link ${
-                  location.pathname === link.path ? 'navbar__link--active' : ''
-                }`}
+              <div 
+                key={link.path} 
+                className={`navbar__link-wrapper ${link.label === 'Feed' ? 'navbar__link-wrapper--has-dropdown' : ''}`}
               >
-                {link.label}
-              </Link>
+                <Link
+                  to={link.path}
+                  className={`navbar__link ${
+                    location.pathname === link.path ? 'navbar__link--active' : ''
+                  }`}
+                >
+                  {link.label}
+                  {link.label === 'Feed' && <span className="dropdown-arrow">▾</span>}
+                </Link>
+                
+                {link.label === 'Feed' && (
+                  <div className="navbar__dropdown glass">
+                    <Link to="/products#growth" className="navbar__dropdown-link">Growth Mixes</Link>
+                    <Link to="/products#nutrients" className="navbar__dropdown-link">Nutrient Pellets</Link>
+                    <Link to="/products#bespoke" className="navbar__dropdown-link">Custom Blends</Link>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 

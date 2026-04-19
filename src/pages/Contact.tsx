@@ -5,6 +5,7 @@ import RevealOnScroll from '../components/RevealOnScroll'
 import SplitText from '../components/SplitText'
 import MagneticButton from '../components/MagneticButton'
 import Marquee from '../components/Marquee'
+import { getGeneralWhatsAppUrl } from '../utils/whatsapp'
 import './Contact.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -32,8 +33,21 @@ export default function Contact() {
     return () => ctx.revert()
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      fullName: formData.get('fullName') as string,
+      email: formData.get('email') as string,
+      ranch: formData.get('ranch') as string,
+      herdSize: formData.get('herdSize') as string,
+      message: formData.get('message') as string,
+    }
+
+    const whatsappUrl = getGeneralWhatsAppUrl(data)
+    window.open(whatsappUrl, '_blank')
+    
     setSubmitted(true)
     setTimeout(() => setSubmitted(false), 4000)
   }
@@ -63,19 +77,19 @@ export default function Contact() {
             {/* Info Column */}
             <RevealOnScroll className="contact-info">
               <div className="contact-detail">
-                <h3 className="title-lg">The CMK Estate</h3>
+                <h3 className="title-lg">The CMK FEEDS</h3>
                 <div className="contact-detail__items">
                   <div className="contact-detail__item">
                     <span className="contact-detail__label">Headquarters</span>
                     <span className="contact-detail__value">
-                      772 Heritage Ridge Road,
+                      1 Bnw Hakmabad, 4 Bgs,
                       <br />
-                      Lancaster County, PA 17601
+                      Rajasthan 335062
                     </span>
                   </div>
                   <div className="contact-detail__item">
                     <span className="contact-detail__label">Phone</span>
-                    <span className="contact-detail__value">+1 (800) CMK-FEED</span>
+                    <span className="contact-detail__value">099296 96199</span>
                   </div>
                   <div className="contact-detail__item">
                     <span className="contact-detail__label">Email</span>
@@ -104,7 +118,7 @@ export default function Contact() {
                   <div className="contact-map__pin">
                     <div className="contact-map__ping" />
                   </div>
-                  <span className="label-sm">Lancaster County, PA</span>
+                  <span className="label-sm">Rajasthan, India</span>
                 </div>
               </div>
             </RevealOnScroll>

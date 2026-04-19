@@ -64,7 +64,7 @@ export default function PrivacyPolicy() {
                   <h3 className="title-lg">Definitions</h3>
                   <ul>
                     <li><strong>Account</strong> means a unique account created for You to access our Service.</li>
-                    <li><strong>Company</strong> refers to CMK Feed, Rajasthan, India.</li>
+                    <li><strong>Company</strong> refers to CMK Feed, 1 Bnw Hakmabad, Rajasthan, India.</li>
                     <li><strong>Cookies</strong> are small files placed on Your device by a website.</li>
                     <li><strong>Personal Data</strong> is any information that relates to an identified individual.</li>
                     <li><strong>Service</strong> refers to the Website.</li>
@@ -137,7 +137,7 @@ export default function PrivacyPolicy() {
                   <p>If you have any questions about this Privacy Policy, You can contact us:</p>
                   <ul>
                     <li>By visiting our website: <a href="https://www.cmkfeed.in" target="_blank" rel="noopener noreferrer">https://www.cmkfeed.in/</a></li>
-                    <li>By phone: +91 97997 62014</li>
+                    <li>By phone: +91 99296 96199</li>
                   </ul>
                 </section>
               </RevealOnScroll>

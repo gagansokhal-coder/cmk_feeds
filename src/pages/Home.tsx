@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import MagneticButton from '../components/MagneticButton'
 import Marquee from '../components/Marquee'
 import InquiryModal from '../components/InquiryModal'
+import PhotoCarousel3D from '../components/PhotoCarousel3D'
 import { getWhatsAppUrl, ProductData } from '../utils/whatsapp'
 import './Home.css'
 
@@ -419,8 +420,8 @@ export default function Home() {
         <div className="hero__bg">
           <img
             ref={heroImgRef}
-            src="/images/hero-cattle.png"
-            alt="Premium cattle grazing at golden hour"
+            src="/images/rajasthan-hero.png"
+            alt="Premium cattle ranch in Rajasthan at golden hour"
             className="hero__bg-img"
           />
           <div className="hero__overlay" ref={heroOverlayRef} />
@@ -430,7 +431,7 @@ export default function Home() {
 
         <div className="hero__content container">
           <p className="hero__tag label-tag" ref={heroTagRef}>
-            Est. 1962 · Lancaster County, PA
+            Est. 1962 · Rajasthan, India
           </p>
 
           <h1 className="hero__title display-lg">
@@ -469,6 +470,9 @@ export default function Home() {
           <span>Scroll to Discover</span>
         </div>
       </section>
+
+      {/* ═══ 3D GALLERY ═══ */}
+      <PhotoCarousel3D />
 
       {/* ═══════ MARQUEE BAND ═══════ */}
       <Marquee text="The Gold Standard" variant="outline" />
