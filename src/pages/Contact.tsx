@@ -46,12 +46,11 @@ export default function Contact() {
           <RevealOnScroll>
             <span className="label-tag">Private Inquiry</span>
             <SplitText as="h1" className="display-lg" delay={0.2} style={{ marginTop: 20 }}>
-              Establish a Private Line.
+              Get in Touch.
             </SplitText>
             <p className="body-lg" style={{ marginTop: 24, maxWidth: 600 }}>
-              Whether discussing large-scale nutritional strategy or bespoke
-              feed formulations, our laboratory and estate managers are
-              available for distinguished consultation.
+              Whether you need a full feed plan or a custom mix, our experts
+              are here to help your farm.
             </p>
           </RevealOnScroll>
         </div>
@@ -67,7 +66,7 @@ export default function Contact() {
                 <h3 className="title-lg">The CMK Estate</h3>
                 <div className="contact-detail__items">
                   <div className="contact-detail__item">
-                    <span className="contact-detail__label">Global Headquarters</span>
+                    <span className="contact-detail__label">Headquarters</span>
                     <span className="contact-detail__value">
                       772 Heritage Ridge Road,
                       <br />
@@ -75,12 +74,12 @@ export default function Contact() {
                     </span>
                   </div>
                   <div className="contact-detail__item">
-                    <span className="contact-detail__label">Direct Line</span>
+                    <span className="contact-detail__label">Phone</span>
                     <span className="contact-detail__value">+1 (800) CMK-FEED</span>
                   </div>
                   <div className="contact-detail__item">
-                    <span className="contact-detail__label">Estate Liaison</span>
-                    <span className="contact-detail__value">liaison@cmkfeed.com</span>
+                    <span className="contact-detail__label">Email</span>
+                    <span className="contact-detail__value">hello@cmkfeed.com</span>
                   </div>
                 </div>
               </div>
@@ -92,10 +91,10 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div>
-                  <strong className="title-md">The Gold Standard Seal</strong>
+                  <strong className="title-md">Our Quality Seal</strong>
                   <p className="body-md" style={{ marginTop: 4 }}>
-                    Every inquiry is handled with laboratory-grade precision
-                    and estate-level confidentiality.
+                    We handle every message with care and keep your
+                    information private.
                   </p>
                 </div>
               </div>
@@ -114,7 +113,7 @@ export default function Contact() {
             {/* Form Column */}
             <RevealOnScroll delay={0.2} className="contact-form-wrap">
               <form className="contact-form" onSubmit={handleSubmit}>
-                <h3 className="headline-md">Request a Consultation</h3>
+                <h3 className="headline-md">Talk to Our Experts</h3>
 
                 <div className="form-group">
                   <input type="text" id="fullName" name="fullName" required placeholder=" " />
@@ -128,22 +127,22 @@ export default function Contact() {
 
                 <div className="form-group">
                   <input type="text" id="ranch" name="ranch" placeholder=" " />
-                  <label htmlFor="ranch">Ranch / Estate Name</label>
+                  <label htmlFor="ranch">Farm Name</label>
                 </div>
 
                 <div className="form-group form-group--select">
                   <select id="herdSize" name="herdSize" required defaultValue="">
-                    <option value="" disabled>Select Herd Size</option>
-                    <option value="under100">Under 100 head</option>
-                    <option value="100-500">100 – 500 head</option>
-                    <option value="500-1000">500 – 1,000 head</option>
-                    <option value="over1000">Over 1,000 head</option>
+                    <option value="" disabled>How many cattle do you have?</option>
+                    <option value="under100">Under 100 animals</option>
+                    <option value="100-500">100 – 500 animals</option>
+                    <option value="500-1000">500 – 1,000 animals</option>
+                    <option value="over1000">Over 1,000 animals</option>
                   </select>
                 </div>
 
                 <div className="form-group">
                   <textarea id="message" name="message" rows={4} required placeholder=" " />
-                  <label htmlFor="message">Your Inquiry</label>
+                  <label htmlFor="message">How can we help?</label>
                 </div>
 
                 <MagneticButton>
@@ -152,13 +151,13 @@ export default function Contact() {
                     className={`btn btn--primary btn--full ${submitted ? 'btn--success' : ''}`}
                     style={{ width: '100%', marginTop: 12 }}
                   >
-                    {submitted ? '✓ Inquiry Submitted' : 'Submit Private Inquiry'}
+                    {submitted ? '✓ Message Sent' : 'Send Message'}
                   </button>
                 </MagneticButton>
 
                 {submitted && (
                   <p className="form-success">
-                    Thank you. Our estate manager will respond within 24 hours.
+                    Thank you. We will get back to you within 24 hours.
                   </p>
                 )}
               </form>
@@ -175,11 +174,11 @@ export default function Contact() {
           <RevealOnScroll className="network__inner">
             <span className="label-tag">Logistics</span>
             <h2 className="headline-lg" style={{ marginTop: 16 }}>
-              Preserving Freshness
+              Fresh Feed, Everywhere
             </h2>
             <p className="body-lg" style={{ marginTop: 16, maxWidth: 560 }}>
-              Our nutritional solutions are distributed across six continents,
-              maintaining maximum bio-availability from Pennsylvania to the world.
+              We ship our feed to six continents. We make sure it stays
+              fresh from our farm to yours.
             </p>
             <div className="network__stats">
               <div className="network__stat">

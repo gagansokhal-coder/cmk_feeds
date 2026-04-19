@@ -13,8 +13,8 @@ gsap.registerPlugin(ScrollTrigger)
 const pillars = [
   {
     number: '01',
-    title: 'Hydration Ecology',
-    desc: 'Implementing advanced riparian fencing and solar-powered well systems to protect critical watersheds across the ranching frontier.',
+    title: 'Water Care',
+    desc: 'We use special fences and solar wells to keep our streams clean and protected.',
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
@@ -23,8 +23,8 @@ const pillars = [
   },
   {
     number: '02',
-    title: 'Zero-Waste Feed',
-    desc: 'Our proprietary circular manufacturing process ensures every byproduct is repurposed, achieving a 98% waste diversion rate in our laboratory facilities.',
+    title: 'No-Waste Feed',
+    desc: 'We make our feed so that nothing is wasted. Almost 100% of our leftover material is used again.',
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c-1.657 0-3-4.03-3-9s1.343-9 3-9m0 18c1.657 0 3-4.03 3-9s-1.343-9-3-9" />
@@ -34,7 +34,7 @@ const pillars = [
   {
     number: '03',
     title: 'Farmers for Farmers',
-    desc: 'We reinvest 15% of our profits back into local cooperative programs that provide sustainable technology to small-scale generational farms.',
+    desc: 'We give 15% of our profits back to help local family farms get the tools they need.',
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
@@ -119,12 +119,12 @@ export default function Sustainability() {
           <RevealOnScroll>
             <span className="label-tag">Our Stewardship</span>
             <SplitText as="h1" className="display-lg" delay={0.2} style={{ marginTop: 20 }}>
-              Stewards of the Land.
+              Caring for the Land.
             </SplitText>
             <p className="body-lg" style={{ marginTop: 24, maxWidth: 600 }}>
-              &ldquo;Our commitment goes beyond nutrition. We are farmers for
-              farmers, preserving the heritage of the ranch for generations yet
-              to come.&rdquo;
+              &ldquo;We do more than just make feed. We help protect the
+              land so it stays healthy for the next generation of
+              farmers.&rdquo;
             </p>
           </RevealOnScroll>
         </div>
@@ -135,27 +135,25 @@ export default function Sustainability() {
         <div className="container">
           <div className="regen__grid">
             <RevealOnScroll className="regen__text">
-              <h2 className="display-md">Regenerative Legacy</h2>
+              <h2 className="display-md">Better Farming for the Future</h2>
               <p className="body-lg" style={{ marginTop: 24 }}>
-                At CMK Feed, we don't just supply nutrition; we nurture
-                ecosystems. Our regenerative ranching protocols help restore
-                soil carbon, improve water retention, and enhance local
-                biodiversity. We believe that healthy cattle start with a
-                healthy earth.
+                At CMK Feed, we care about the whole environment. Our farming
+                ways help keep the soil healthy and save water. We believe
+                healthy cattle need a healthy earth.
               </p>
               <div className="regen__badge">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
                   <path d="M22 4L12 14.01l-3-3" />
                 </svg>
-                100% Ethical Sourcing from Local Homesteads
+                100% Ethical Sourcing from Local Farms
               </div>
             </RevealOnScroll>
 
             <RevealOnScroll delay={0.2} className="regen__metrics">
               <div className="metric">
                 <div className="metric__header">
-                  <span className="metric__label">Soil Carbon Sequestration</span>
+                  <span className="metric__label">Healthy Soil Build-up</span>
                   <span className="metric__value">87%</span>
                 </div>
                 <div className="progress-bar">
@@ -164,7 +162,7 @@ export default function Sustainability() {
               </div>
               <div className="metric">
                 <div className="metric__header">
-                  <span className="metric__label">Water Retention Improvement</span>
+                  <span className="metric__label">Water Saved in Soil</span>
                   <span className="metric__value">72%</span>
                 </div>
                 <div className="progress-bar">
@@ -173,7 +171,7 @@ export default function Sustainability() {
               </div>
               <div className="metric">
                 <div className="metric__header">
-                  <span className="metric__label">Waste Diversion Rate</span>
+                  <span className="metric__label">Waste Saved</span>
                   <span className="metric__value">98%</span>
                 </div>
                 <div className="progress-bar">
@@ -200,9 +198,9 @@ export default function Sustainability() {
       <section className="pillars section" style={{ perspective: 1000 }}>
         <div className="container">
           <RevealOnScroll>
-            <span className="label-tag">Sustainability Pillars</span>
+            <span className="label-tag">Our Promises</span>
             <h2 className="display-md" style={{ marginTop: 20 }}>
-              Three Pillars of Our Promise
+              Our Three Big Promises
             </h2>
           </RevealOnScroll>
 
@@ -225,15 +223,15 @@ export default function Sustainability() {
       <section className="sustain-cta section">
         <div className="container">
           <RevealOnScroll className="sustain-cta__inner">
-            <h2 className="headline-lg">Ready to elevate your herd?</h2>
+            <h2 className="headline-lg">Ready to help your herd grow?</h2>
             <p className="body-lg" style={{ marginTop: 16, maxWidth: 520 }}>
-              Join the movement toward heritage-grade nutrition and planetary
-              stewardship. Your ranch is your legacy.
+              Choose better feed and better farming for a better future.
+              Your farm is your legacy.
             </p>
             <div style={{ marginTop: 36, display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
               <MagneticButton>
                 <Link to="/contact" className="btn btn--primary">
-                  Request a Consultation
+                  Talk to Us
                 </Link>
               </MagneticButton>
               <MagneticButton>

@@ -4,8 +4,8 @@ import './Navbar.css'
 
 const navLinks = [
   { path: '/', label: 'Home' },
-  { path: '/products', label: 'Products' },
-  { path: '/sustainability', label: 'Sustainability' },
+  { path: '/products', label: 'Feed' },
+  { path: '/sustainability', label: 'Environment' },
   { path: '/contact', label: 'Contact' },
 ]
 
@@ -53,7 +53,7 @@ export default function Navbar() {
           </div>
 
           <Link to="/contact" className="navbar__cta btn btn--primary btn--sm">
-            Private Inquiry
+            Talk to Us
           </Link>
 
           <button
@@ -82,7 +82,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link to="/contact" className="btn btn--primary" style={{ marginTop: 32 }}>
-            Private Inquiry
+            Talk to Us
           </Link>
         </div>
       </div>

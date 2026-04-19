@@ -20,22 +20,22 @@ export default function Footer() {
 
           <div className="footer__columns">
             <div className="footer__col">
-              <h4 className="footer__col-title">Heritage</h4>
+              <h4 className="footer__col-title">Our History</h4>
               <Link to="/" className="footer__link">Our Story</Link>
-              <Link to="/products" className="footer__link">The Millhouse</Link>
-              <Link to="/products" className="footer__link">Research Trials</Link>
+              <Link to="/products" className="footer__link">Our Products</Link>
+              <Link to="/products" className="footer__link">Field Tests</Link>
             </div>
             <div className="footer__col">
-              <h4 className="footer__col-title">The Ledger</h4>
-              <Link to="/sustainability" className="footer__link">Sustainability Report</Link>
-              <Link to="/" className="footer__link">Terms of Excellence</Link>
+              <h4 className="footer__col-title">Information</h4>
+              <Link to="/sustainability" className="footer__link">Our Environment</Link>
+              <Link to="/" className="footer__link">Terms of Service</Link>
               <Link to="/" className="footer__link">Privacy Policy</Link>
             </div>
             <div className="footer__col">
-              <h4 className="footer__col-title">Connect</h4>
-              <Link to="/contact" className="footer__link">Contact Estate Manager</Link>
-              <Link to="/products" className="footer__link">Laboratory Services</Link>
-              <Link to="/contact" className="footer__link">Custom Formulations</Link>
+              <h4 className="footer__col-title">Get in Touch</h4>
+              <Link to="/contact" className="footer__link">Talk to Us</Link>
+              <Link to="/products" className="footer__link">Lab Services</Link>
+              <Link to="/contact" className="footer__link">Custom Feed</Link>
             </div>
           </div>
         </div>
