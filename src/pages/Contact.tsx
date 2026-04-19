@@ -93,8 +93,7 @@ export default function Contact() {
                 <div>
                   <strong className="title-md">Our Quality Seal</strong>
                   <p className="body-md" style={{ marginTop: 4 }}>
-                    We handle every message with care and keep your
-                    information private.
+                    We keep your information private and handle every message with care.
                   </p>
                 </div>
               </div>
