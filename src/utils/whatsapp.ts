@@ -13,6 +13,8 @@ export type ProductData = {
   desc: string;
   protein: string;
   energy: string;
+  badge?: string;
+  badgeClass?: string;
 };
 
 /**

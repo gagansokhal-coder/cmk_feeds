@@ -11,7 +11,7 @@ import './Products.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const products: ProductData[] & { badge: string; badgeClass: string }[] = [
+const products: ProductData[] = [
   {
     name: 'The Gilded Grain',
     desc: 'A high-quality mix of barley and oils. Made for better growth and a shiny coat.',
