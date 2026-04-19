@@ -112,7 +112,7 @@
   background: var(--primary);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: 0 0 0 4px rgba(255, 179, 174, 0.2);
+  box-shadow: 0 0 0 4px rgba(126, 181, 214, 0.2);
 }
 
 .contact-map__ping {
@@ -156,7 +156,7 @@
   color: var(--on-surface);
   background: transparent;
   border: none;
-  border-bottom: 1.5px solid rgba(163, 139, 137, 0.3);
+  border-bottom: 1.5px solid rgba(126, 181, 214, 0.2);
   transition: border-color var(--duration-fast) ease;
   font-family: var(--font-label);
 }
@@ -201,7 +201,7 @@
   color: var(--on-surface);
   background: transparent;
   border: none;
-  border-bottom: 1.5px solid rgba(163, 139, 137, 0.3);
+  border-bottom: 1.5px solid rgba(126, 181, 214, 0.2);
   cursor: pointer;
   appearance: none;
   font-family: var(--font-label);
@@ -228,7 +228,8 @@
 }
 
 .btn--success {
-  background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-container) 100%) !important;
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--surface-bright) 100%) !important;
+  color: var(--surface-dim) !important;
 }
 
 .form-success {

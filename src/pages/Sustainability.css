@@ -28,9 +28,9 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(8, 20, 37, 0.2) 0%,
-    rgba(8, 20, 37, 0.85) 70%,
-    rgba(8, 20, 37, 1) 100%
+    rgba(27, 23, 19, 0.4) 0%,
+    rgba(16, 13, 11, 0.9) 70%,
+    rgba(16, 13, 11, 1) 100%
   );
 }
 
@@ -53,7 +53,7 @@
   gap: 10px;
   margin-top: 28px;
   padding: 12px 20px;
-  background: rgba(173, 212, 74, 0.08);
+  background: rgba(126, 181, 214, 0.1);
   border-radius: var(--radius-full);
   font-family: var(--font-label);
   font-size: 0.8125rem;
@@ -99,7 +99,7 @@
 .progress-bar__fill {
   height: 100%;
   border-radius: 3px;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-container) 100%);
+  background: linear-gradient(90deg, var(--primary) 0%, var(--tertiary) 100%);
   width: 0%;
 }
 
@@ -148,7 +148,7 @@
   font-family: var(--font-display);
   font-size: 3rem;
   font-weight: 900;
-  color: var(--surface-container-highest);
+  color: rgba(126, 181, 214, 0.05);
   line-height: 1;
 }
 

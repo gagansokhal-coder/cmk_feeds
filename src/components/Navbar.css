@@ -11,10 +11,11 @@
 
 .navbar--scrolled {
   padding: 12px 0;
-  background: rgba(8, 20, 37, 0.75);
+  background: rgba(27, 23, 19, 0.88); /* Deep Heritage Brown */
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  box-shadow: 0 1px 0 rgba(85, 66, 65, 0.15);
+  border-bottom: 1px solid rgba(126, 181, 214, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .navbar__inner {
@@ -39,8 +40,8 @@
   font-family: var(--font-display);
   font-size: 1.75rem;
   font-weight: 900;
-  letter-spacing: -0.03em;
-  background: linear-gradient(135deg, var(--primary) 0%, #ff8a84 100%);
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--tertiary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -147,14 +148,14 @@
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: rgba(4, 14, 31, 0.97);
-  backdrop-filter: blur(30px);
+  background: rgba(20, 17, 14, 0.98);
+  backdrop-filter: blur(40px);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--duration-slow) var(--ease-out);
+  transition: opacity var(--duration-normal) var(--ease-out);
 }
 
 .mobile-menu--open {

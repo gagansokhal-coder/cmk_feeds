@@ -30,8 +30,8 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(8, 20, 37, 0.6) 0%,
-    rgba(8, 20, 37, 0.95) 100%
+    rgba(27, 23, 19, 0.6) 0%,
+    rgba(16, 13, 11, 0.98) 100%
   );
 }
 
@@ -117,6 +117,18 @@
   color: var(--primary);
 }
 
+.product-detail-card__actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+@media (max-width: 480px) {
+  .product-detail-card__actions {
+    flex-direction: column;
+  }
+}
+
 /* ── Bespoke Section ── */
 .bespoke__card {
   background: var(--surface-container);
@@ -139,7 +151,7 @@
   color: var(--on-surface-variant);
   margin-top: 24px;
   padding-left: 20px;
-  border-left: 2px solid var(--primary-container);
+  border-left: 2px solid var(--primary);
 }
 
 .bespoke__img {
