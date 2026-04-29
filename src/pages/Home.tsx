@@ -63,6 +63,13 @@ export default function Home() {
   // WhatsApp Logic State
   const [selectedProduct, setSelectedProduct] = useState<ProductData | null>(null)
   const [isInquiryOpen, setIsInquiryOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 901)
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 901)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -233,10 +240,10 @@ export default function Home() {
         })
       }
 
-      // ═══════════════════════════════════════════
-      //  FLOATING PRODUCT IMAGES (scroll-driven)
-      // ═══════════════════════════════════════════
-      if (productFloatRef.current) {
+      // ═════════════════════════════════════════════
+      //  FLOATING PRODUCT IMAGES (desktop only — scroll-driven)
+      // ═════════════════════════════════════════════
+      if (productFloatRef.current && window.innerWidth >= 901) {
         // Image 1 — floats up and rotates
         gsap.fromTo(
           floatImg1.current,
@@ -395,6 +402,9 @@ export default function Home() {
     return () => ctx.revert()
   }, [])
 
+
+
+
   const handleOrder = (product: ProductData) => {
     const url = getWhatsAppUrl('ORDER', product)
     window.open(url, '_blank')
@@ -538,81 +548,126 @@ export default function Home() {
             <div className="product-float__text">
               <span className="label-tag">Our Collection</span>
               <h2 className="display-md">Feed built for<br />better growth.</h2>
+              <p className="body-lg" style={{ marginTop: 20, maxWidth: 420, color: 'var(--on-surface-variant)' }}>
+                From calves to high-yield milking cows — every stage of
+                life, covered with precision nutrition.
+              </p>
+
+              {/* Mobile fallback grid — visible only on small screens */}
+              <div className="product-float__mobile-grid">
+                <div className="product-float__mobile-card">
+                  <img src="/images/cmk-gold-product.jpg" alt="CMK Gold" />
+                  <p className="product-float__mobile-label">CMK Gold</p>
+                </div>
+                <div className="product-float__mobile-card">
+                  <img src="/images/cmk-gold-product.jpg" alt="CMK Calf Starter" />
+                  <p className="product-float__mobile-label">Calf Starter</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Floating product bags */}
+          {/* Floating product bags — desktop only */}
           <img
             ref={floatImg1}
-            src="/images/feed-product.png"
-            alt="Heritage Blend"
+            src="/images/cmk-gold-product.jpg"
+            alt="CMK Gold"
             className="product-float__img product-float__img--1"
           />
           <img
             ref={floatImg2}
             src="/images/feed-product.png"
-            alt="Prime Lab Elite"
+            alt="CMK Feed"
             className="product-float__img product-float__img--2"
           />
           <img
             ref={floatImg3}
-            src="/images/feed-product.png"
-            alt="Winter Reserve"
+            src="/images/cmk-gold-product.jpg"
+            alt="CMK Premium"
             className="product-float__img product-float__img--3"
           />
         </div>
       </section>
 
-      {/* ═══════ HORIZONTAL SCROLL — PRODUCT SHOWCASE ═══════ */}
-      <section className="hscroll" ref={horizontalRef}>
-        <div className="hscroll__track" ref={horizontalTrackRef}>
-          {/* Intro panel */}
-          <div className="hscroll__panel hscroll__intro">
-            <div className="hscroll__intro-content">
-              <span className="label-tag">Popular Mixes</span>
-              <h2 className="display-md" style={{ marginTop: 16 }}>
-                Slide to explore<br />our feed →
-              </h2>
+      {/* ═══════ PRODUCT SHOWCASE ═══════ */}
+      {isMobile ? (
+        /* ── Mobile: simple stacked cards, no GSAP horizontal scroll ── */
+        <section style={{ background: 'var(--surface-container)', padding: '64px 0' }}>
+          <div className="container">
+            <span className="label-tag">Popular Mixes</span>
+            <h2 className="display-sm" style={{ marginTop: 16, marginBottom: 40 }}>Our Products</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+              {featuredProducts.map((product, i) => (
+                <div key={product.name} style={{
+                  background: 'var(--surface-container-low)',
+                  borderRadius: 'var(--radius-xl)',
+                  overflow: 'hidden',
+                  border: '1px solid rgba(255,255,255,0.06)'
+                }}>
+                  <div style={{ height: 220, overflow: 'hidden' }}>
+                    <img src="/images/cmk-gold-product.jpg" alt={product.name}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  </div>
+                  <div style={{ padding: '24px 20px' }}>
+                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 900,
+                      color: 'transparent', WebkitTextStroke: '1px rgba(126,181,214,0.3)' }}>0{i + 1}</span>
+                    <h3 className="headline-md" style={{ marginTop: 8 }}>{product.name}</h3>
+                    <p className="body-sm" style={{ marginTop: 8, color: 'var(--on-surface-variant)' }}>{product.desc}</p>
+                    <div style={{ display: 'flex', gap: 32, margin: '16px 0' }}>
+                      <div><span className="label-sm" style={{ display: 'block', marginBottom: 4 }}>Protein</span>
+                        <strong style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: 'var(--primary)' }}>{product.protein}</strong></div>
+                      <div><span className="label-sm" style={{ display: 'block', marginBottom: 4 }}>Energy</span>
+                        <strong style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: 'var(--primary)' }}>{product.energy}</strong></div>
+                    </div>
+                    <div style={{ display: 'flex', gap: 12, marginTop: 16, flexWrap: 'wrap' }}>
+                      <button onClick={() => handleOrder(product)} className="btn btn--primary btn--sm">Order Now</button>
+                      <button onClick={() => handleInquiryClick(product)} className="btn btn--outline btn--sm">Enquiry</button>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-
-          {/* Map through featured products */}
-          {featuredProducts.map((product, i) => (
-            <div className="hscroll__panel hscroll-card" key={product.name}>
-              <div className="hscroll-card__img">
-                <img src="/images/feed-product.png" alt={product.name} />
-              </div>
-              <div className="hscroll-card__content">
-                <span className="product-num">0{i + 1}</span>
-                <h3 className="headline-lg">{product.name}</h3>
-                <p className="body-md">{product.desc}</p>
-                <div className="hscroll-card__stats">
-                  <div><span className="label-sm">Protein</span><strong>{product.protein}</strong></div>
-                  <div><span className="label-sm">Energy</span><strong>{product.energy}</strong></div>
-                </div>
-                <div className="hscroll-card__actions" style={{ display: 'flex', gap: 12, marginTop: 24 }}>
-                  <MagneticButton>
-                    <button
-                      onClick={() => handleOrder(product)}
-                      className="btn btn--primary btn--sm"
-                    >
-                      Order Now
-                    </button>
-                  </MagneticButton>
-                  <MagneticButton>
-                    <button
-                      onClick={() => handleInquiryClick(product)}
-                      className="btn btn--outline btn--sm"
-                    >
-                      Enquiry
-                    </button>
-                  </MagneticButton>
-                </div>
+        </section>
+      ) : (
+        /* ── Desktop: GSAP-pinned horizontal scroll ── */
+        <section className="hscroll" ref={horizontalRef}>
+          <div className="hscroll__track" ref={horizontalTrackRef}>
+            <div className="hscroll__panel hscroll__intro">
+              <div className="hscroll__intro-content">
+                <span className="label-tag">Popular Mixes</span>
+                <h2 className="display-md" style={{ marginTop: 16 }}>
+                  Slide to explore<br />our feed →
+                </h2>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
+            {featuredProducts.map((product, i) => (
+              <div className="hscroll__panel hscroll-card" key={product.name} style={{ display: 'flex' }}>
+                <div className="hscroll-card__img">
+                  <img src="/images/cmk-gold-product.jpg" alt={product.name} />
+                </div>
+                <div className="hscroll-card__content">
+                  <span className="product-num">0{i + 1}</span>
+                  <h3 className="headline-lg">{product.name}</h3>
+                  <p className="body-md">{product.desc}</p>
+                  <div className="hscroll-card__stats">
+                    <div><span className="label-sm">Protein</span><strong>{product.protein}</strong></div>
+                    <div><span className="label-sm">Energy</span><strong>{product.energy}</strong></div>
+                  </div>
+                  <div className="hscroll-card__actions">
+                    <MagneticButton>
+                      <button onClick={() => handleOrder(product)} className="btn btn--primary btn--sm">Order Now</button>
+                    </MagneticButton>
+                    <MagneticButton>
+                      <button onClick={() => handleInquiryClick(product)} className="btn btn--outline btn--sm">Enquiry</button>
+                    </MagneticButton>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ═══════ MARQUEE ═══════ */}
       <Marquee text="Farmers for Farmers" separator="◆" />

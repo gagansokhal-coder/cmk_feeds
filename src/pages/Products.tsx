@@ -1,4 +1,4 @@
-import { useEffect, useRef, useLayoutEffect, useState } from 'react'
+import { useRef, useLayoutEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -11,38 +11,37 @@ import './Products.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const products: ProductData[] = [
+interface CMKProduct extends ProductData {
+  features: string[]
+  target: string
+  weight: string
+  color: string
+}
+
+const products: CMKProduct[] = [
   {
-    name: 'The Gilded Grain',
-    desc: 'A high-quality mix of barley and oils. Made for better growth and a shiny coat.',
-    protein: '18.5%',
-    energy: '13.2 MJ',
+    name: 'CMK Gold',
+    desc: 'Our flagship balanced cattle feed engineered for high-yield milking cows. Advanced nutrition formula that reduces metabolic stress, improves fat% and SNF, and sustains peak milk output season after season.',
+    protein: '20%',
+    energy: '13.8 MJ',
     badge: 'Best Seller',
     badgeClass: '',
+    features: ['Steamed Pallet', 'Toxins <20 PPB', 'Highly Nutrient', 'No Urea'],
+    target: 'Cows producing up to 20 L/day',
+    weight: '50 kg',
+    color: '#e8a422',
   },
   {
-    name: 'Pasture Prime',
-    desc: 'Small nutrient pellets that work well with natural grass. The start of a great farm.',
-    protein: '15.8%',
-    energy: '12.6 MJ',
-    badge: 'Foundation',
-    badgeClass: 'badge--green',
-  },
-  {
-    name: 'Young Herd Mix',
-    desc: 'High-protein food for the first 100 days. With minerals for strong bones.',
-    protein: '22.1%',
+    name: 'CMK Calf Starter',
+    desc: 'Specially crafted for calves from 5 days to 4 months old. High-energy probiotic-rich formula that accelerates immunity, rumen development, and early solid feeding — building the strongest possible foundation for your herd.',
+    protein: '22%',
     energy: '14.8 MJ',
     badge: 'Young Herd',
-    badgeClass: 'badge--amber',
-  },
-  {
-    name: 'Power Growth Blend',
-    desc: 'Our strongest feed for finishing. With healthy molasses and minerals to help cattle keep their weight.',
-    protein: '20.4%',
-    energy: '15.4 MJ',
-    badge: 'Performance',
-    badgeClass: '',
+    badgeClass: 'badge--green',
+    features: ['Probiotic Enriched', 'Bone Strengthening', 'Rumen Development', 'High Immunity'],
+    target: 'Calves aged 5 days – 4 months',
+    weight: '40 kg',
+    color: '#3aaa6e',
   },
 ]
 
@@ -51,13 +50,11 @@ export default function Products() {
   const heroImgRef = useRef<HTMLImageElement>(null)
   const bespokeImgRef = useRef<HTMLDivElement>(null)
 
-  // WhatsApp Logic State
   const [selectedProduct, setSelectedProduct] = useState<ProductData | null>(null)
   const [isInquiryOpen, setIsInquiryOpen] = useState(false)
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-
       // Hero Parallax
       if (heroImgRef.current && heroRef.current) {
         gsap.to(heroImgRef.current, {
@@ -72,23 +69,20 @@ export default function Products() {
         })
       }
 
-      // 3D Card Reveals
-      const cards = gsap.utils.toArray<HTMLElement>('.product-detail-card')
+      // Product Cards stagger reveal
+      const cards = gsap.utils.toArray<HTMLElement>('.pcard')
       cards.forEach((card, i) => {
         gsap.fromTo(
           card,
-          { opacity: 0, y: 100, rotateX: 10, scale: 0.95 },
+          { opacity: 0, y: 80, scale: 0.97 },
           {
             opacity: 1,
             y: 0,
-            rotateX: 0,
             scale: 1,
-            duration: 1.2,
+            duration: 1.1,
             ease: 'power3.out',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 85%',
-            },
+            delay: i * 0.18,
+            scrollTrigger: { trigger: card, start: 'top 88%' },
           }
         )
       })
@@ -97,109 +91,111 @@ export default function Products() {
       if (bespokeImgRef.current) {
         const overlay = bespokeImgRef.current.querySelector('.img-reveal__overlay')
         const img = bespokeImgRef.current.querySelector('img')
-
-        const revTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: bespokeImgRef.current,
-            start: 'top 80%',
-          },
-        })
-
-        revTl
-          .to(overlay, { scaleX: 0, duration: 1.2, ease: 'power4.inOut', transformOrigin: 'right center' })
+        const tl = gsap.timeline({ scrollTrigger: { trigger: bespokeImgRef.current, start: 'top 80%' } })
+        tl.to(overlay, { scaleX: 0, duration: 1.2, ease: 'power4.inOut', transformOrigin: 'right center' })
           .fromTo(img, { scale: 1.3 }, { scale: 1, duration: 1.5, ease: 'power3.out' }, 0.2)
       }
-
     })
-
     return () => ctx.revert()
   }, [])
 
-  const handleOrder = (product: ProductData) => {
-    const url = getWhatsAppUrl('ORDER', product)
-    window.open(url, '_blank')
-  }
-
-  const handleInquiryClick = (product: ProductData) => {
-    setSelectedProduct(product)
-    setIsInquiryOpen(true)
-  }
-
+  const handleOrder = (product: ProductData) => window.open(getWhatsAppUrl('ORDER', product), '_blank')
+  const handleInquiryClick = (product: ProductData) => { setSelectedProduct(product); setIsInquiryOpen(true) }
   const handleInquirySend = (message: string) => {
-    if (selectedProduct) {
-      const url = getWhatsAppUrl('INQUIRY', selectedProduct, message)
-      window.open(url, '_blank')
-    }
+    if (selectedProduct) window.open(getWhatsAppUrl('INQUIRY', selectedProduct, message), '_blank')
   }
 
   return (
     <div className="page-products">
+
       {/* ═══ HERO ═══ */}
       <section className="products-hero" ref={heroRef}>
         <div className="products-hero__bg">
-          <img ref={heroImgRef} src="/images/feed-product.png" alt="Premium cattle feed" />
+          <img ref={heroImgRef} src="/images/cmk-gold-product.jpg" alt="CMK Gold Premium Cattle Feed" />
           <div className="products-hero__overlay" />
           <div className="hero__grain" />
         </div>
         <div className="container products-hero__content">
           <RevealOnScroll>
-            <span className="label-tag">The Collection</span>
+            <span className="label-tag">Our Products</span>
             <SplitText as="h1" className="display-lg" delay={0.2}>
-              High-Quality Feed.
+              Premium Feed.<br />Proven Results.
             </SplitText>
-            <p className="body-lg" style={{ marginTop: 24, maxWidth: 560 }}>
-              Explore our collection of advanced feed mixes.
-              We build them for top-quality herds. Every grain counts.
+            <p className="body-lg" style={{ marginTop: 24, maxWidth: 520 }}>
+              Every bag is engineered for one purpose — to make your cattle
+              healthier, stronger, and more productive.
             </p>
           </RevealOnScroll>
         </div>
       </section>
 
-      {/* ═══ PRODUCT GRID ═══ */}
-      <section className="products-list section">
+      {/* ═══ PRODUCT SHOWCASE ═══ */}
+      <section className="products-showcase section">
         <div className="container">
-          <div className="products-list__grid">
+          <div className="products-showcase__list">
             {products.map((product, i) => (
-              <div className="product-detail-card" key={product.name}>
-                <div className="product-detail-card__img">
-                  <img src="/images/feed-product.png" alt={product.name} />
+              <div className="pcard" key={product.name}>
+
+                {/* Index number */}
+                <span className="pcard__index">0{i + 1}</span>
+
+                {/* Image side */}
+                <div className="pcard__img-wrap">
+                  <div className="pcard__img-glow" style={{ '--glow': product.color } as React.CSSProperties} />
+                  <img src="/images/cmk-gold-product.jpg" alt={product.name} className="pcard__img" />
                 </div>
-                <div className="product-detail-card__content">
-                  <span className={`featured-card__badge ${product.badgeClass}`}>
-                    {product.badge}
-                  </span>
-                  <h3 className="headline-lg">{product.name}</h3>
-                  <p className="body-md">{product.desc}</p>
-                  <div className="product-detail-card__stats">
-                    <div className="product-stat">
-                      <span className="product-stat__label">Protein</span>
-                      <span className="product-stat__value">{product.protein}</span>
+
+                {/* Content side */}
+                <div className="pcard__body">
+                  <div className="pcard__top">
+                    <span className={`featured-card__badge ${product.badgeClass}`}>{product.badge}</span>
+                    <span className="pcard__weight">{product.weight} Bag</span>
+                  </div>
+
+                  <h2 className="pcard__name">{product.name}</h2>
+                  <p className="pcard__target">🐄 {product.target}</p>
+                  <p className="pcard__desc">{product.desc}</p>
+
+                  {/* Feature pills */}
+                  <div className="pcard__features">
+                    {product.features.map(f => (
+                      <span key={f} className="pcard__feature-pill">✓ {f}</span>
+                    ))}
+                  </div>
+
+                  {/* Stats bar */}
+                  <div className="pcard__stats">
+                    <div className="pcard__stat">
+                      <span className="pcard__stat-label">Crude Protein</span>
+                      <span className="pcard__stat-value" style={{ color: product.color }}>{product.protein}</span>
                     </div>
-                    <div className="product-stat">
-                      <span className="product-stat__label">Energy (ME)</span>
-                      <span className="product-stat__value">{product.energy}</span>
+                    <div className="pcard__stat-divider" />
+                    <div className="pcard__stat">
+                      <span className="pcard__stat-label">Metabolic Energy</span>
+                      <span className="pcard__stat-value" style={{ color: product.color }}>{product.energy}</span>
+                    </div>
+                    <div className="pcard__stat-divider" />
+                    <div className="pcard__stat">
+                      <span className="pcard__stat-label">Pack Weight</span>
+                      <span className="pcard__stat-value" style={{ color: product.color }}>{product.weight}</span>
                     </div>
                   </div>
-                  
-                  <div className="product-detail-card__actions">
-                    <MagneticButton style={{ flex: 1 }}>
-                      <button 
-                        onClick={() => handleOrder(product)} 
-                        className="btn btn--primary btn--sm btn--full"
-                      >
-                        Order Now
+
+                  {/* Actions */}
+                  <div className="pcard__actions">
+                    <MagneticButton>
+                      <button onClick={() => handleOrder(product)} className="btn btn--primary">
+                        Order on WhatsApp
                       </button>
                     </MagneticButton>
-                    <MagneticButton style={{ flex: 1 }}>
-                      <button 
-                        onClick={() => handleInquiryClick(product)} 
-                        className="btn btn--outline btn--sm btn--full"
-                      >
+                    <MagneticButton>
+                      <button onClick={() => handleInquiryClick(product)} className="btn btn--outline">
                         Enquiry
                       </button>
                     </MagneticButton>
                   </div>
                 </div>
+
               </div>
             ))}
           </div>
@@ -216,12 +212,12 @@ export default function Products() {
                 Custom Feed for Your Farm
               </h2>
               <p className="body-lg" style={{ marginTop: 16 }}>
-                For herds larger than 500 animals, our experts can make
-                a custom mix just for your farm's soil and water.
+                For larger herds, our experts can craft a custom blend
+                tailored to your farm's soil and water profile.
                 Give your cattle exactly what they need.
               </p>
               <p className="bespoke__quote">
-                &ldquo;The best nutrition for the best cattle.&rdquo;
+                &ldquo;Complete health for your animal.&rdquo;
               </p>
               <MagneticButton style={{ marginTop: 32 }}>
                 <Link to="/contact" className="btn btn--primary">
@@ -229,7 +225,7 @@ export default function Products() {
                 </Link>
               </MagneticButton>
             </RevealOnScroll>
-            
+
             <div className="bespoke__img">
               <div className="img-reveal" ref={bespokeImgRef} style={{ height: '100%', borderRadius: 0 }}>
                 <div className="img-reveal__overlay" />
@@ -240,9 +236,9 @@ export default function Products() {
         </div>
       </section>
 
-      <InquiryModal 
-        isOpen={isInquiryOpen} 
-        onClose={() => setIsInquiryOpen(false)} 
+      <InquiryModal
+        isOpen={isInquiryOpen}
+        onClose={() => setIsInquiryOpen(false)}
         product={selectedProduct}
         onSend={handleInquirySend}
       />

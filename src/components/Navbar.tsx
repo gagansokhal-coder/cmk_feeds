@@ -34,8 +34,7 @@ export default function Navbar() {
       <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
         <div className="navbar__inner">
           <Link to="/" className="navbar__logo">
-            <span className="navbar__logo-mark">CMK</span>
-            <span className="navbar__logo-text">FEED</span>
+            <img src="/images/cmk-logo.png" alt="CMK FEED Logo" className="navbar__logo-img" />
           </Link>
 
           <div className="navbar__links">
@@ -56,9 +55,9 @@ export default function Navbar() {
                 
                 {link.label === 'Feed' && (
                   <div className="navbar__dropdown glass">
-                    <Link to="/products#growth" className="navbar__dropdown-link">Growth Mixes</Link>
-                    <Link to="/products#nutrients" className="navbar__dropdown-link">Nutrient Pellets</Link>
-                    <Link to="/products#bespoke" className="navbar__dropdown-link">Custom Blends</Link>
+                    <Link to="/products#calf" className="navbar__dropdown-link">Calf & Grower Feed</Link>
+                    <Link to="/products#milking" className="navbar__dropdown-link">Milking Cow Feed</Link>
+                    <Link to="/products#buffalo" className="navbar__dropdown-link">Buffalo Feed</Link>
                   </div>
                 )}
               </div>
