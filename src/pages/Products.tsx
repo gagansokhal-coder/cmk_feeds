@@ -16,12 +16,13 @@ interface CMKProduct extends ProductData {
   target: string
   weight: string
   color: string
+  image: string
 }
 
 const products: CMKProduct[] = [
   {
     name: 'CMK Gold',
-    desc: 'Our flagship balanced cattle feed engineered for high-yield milking cows. Advanced nutrition formula that reduces metabolic stress, improves fat% and SNF, and sustains peak milk output season after season.',
+    desc: 'Our flagship balanced cattle feed engineered for high-yield milking cows. Advanced nutrition formula that reduces metabolic stress, improves fat% and SNF, and sustains peak milk output season after season. Made with premium steam-processed ingredients for maximum digestibility and nutrient absorption.',
     protein: '20%',
     energy: '13.8 MJ',
     badge: 'Best Seller',
@@ -30,10 +31,24 @@ const products: CMKProduct[] = [
     target: 'Cows producing up to 20 L/day',
     weight: '50 kg',
     color: '#e8a422',
+    image: '/images/cmk-gold-product.jpg',
+  },
+  {
+    name: 'CMK Silver',
+    desc: 'A complete balanced cattle feed designed for everyday nutrition and optimal health. CMK Silver provides the perfect blend of crude protein, fiber, and essential minerals to keep your cattle in peak condition. Ideal for farms looking for reliable, high-quality feed at great value — delivering complete health for your animal.',
+    protein: '18%',
+    energy: '12.5 MJ',
+    badge: 'Value Pick',
+    badgeClass: 'badge--silver',
+    features: ['Balanced Formula', 'Natural Ingredients', 'Complete Minerals', 'No Urea'],
+    target: 'All breeds — daily balanced nutrition',
+    weight: '50 kg',
+    color: '#1a6fcc',
+    image: '/images/cmk-silver-product.png',
   },
   {
     name: 'CMK Calf Starter',
-    desc: 'Specially crafted for calves from 5 days to 4 months old. High-energy probiotic-rich formula that accelerates immunity, rumen development, and early solid feeding — building the strongest possible foundation for your herd.',
+    desc: 'Specially crafted for calves from 5 days to 4 months old. High-energy probiotic-rich formula that accelerates immunity, rumen development, and early solid feeding — building the strongest possible foundation for your herd. Enriched with bone-strengthening calcium and essential vitamins for rapid, healthy growth.',
     protein: '22%',
     energy: '14.8 MJ',
     badge: 'Young Herd',
@@ -42,6 +57,7 @@ const products: CMKProduct[] = [
     target: 'Calves aged 5 days – 4 months',
     weight: '40 kg',
     color: '#3aaa6e',
+    image: '/images/cmk-gold-product.jpg',
   },
 ]
 
@@ -111,7 +127,7 @@ export default function Products() {
       {/* ═══ HERO ═══ */}
       <section className="products-hero" ref={heroRef}>
         <div className="products-hero__bg">
-          <img ref={heroImgRef} src="/images/cmk-gold-product.jpg" alt="CMK Gold Premium Cattle Feed" />
+          <img ref={heroImgRef} src="/images/cmk-silver-product.png" alt="CMK Silver Balanced Cattle Feed" />
           <div className="products-hero__overlay" />
           <div className="hero__grain" />
         </div>
@@ -142,7 +158,7 @@ export default function Products() {
                 {/* Image side */}
                 <div className="pcard__img-wrap">
                   <div className="pcard__img-glow" style={{ '--glow': product.color } as React.CSSProperties} />
-                  <img src="/images/cmk-gold-product.jpg" alt={product.name} className="pcard__img" />
+                  <img src={product.image} alt={product.name} className="pcard__img" />
                 </div>
 
                 {/* Content side */}

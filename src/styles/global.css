@@ -1,59 +1,59 @@
 /* ═══════════════════════════════════════════════
-   CMK FEED — THE AGRARIAN ESTATE DESIGN SYSTEM
-   Dark Luxury Aesthetic · Oxblood · Midnight · Spring
+   CMK FEED — PREMIUM BLUE & WHITE DESIGN SYSTEM
+   Clean White · Royal Blue · Light Mode
    ═══════════════════════════════════════════════ */
 
 /* ── CSS Custom Properties / Design Tokens ── */
 :root {
-  /* Surface System (Heritage Brown) */
-  --surface: #1b1713;
-  --surface-dim: #1b1713;
-  --surface-bright: #2d2622;
-  --surface-container-lowest: #100d0b;
-  --surface-container-low: #241f1b;
-  --surface-container: #2d2622;
-  --surface-container-high: #3a322d;
-  --surface-container-highest: #4a413b;
+  /* Surface System (Pure White) */
+  --surface: #ffffff;
+  --surface-dim: #f5f7fb;
+  --surface-bright: #ffffff;
+  --surface-container-lowest: #f0f4fa;
+  --surface-container-low: #f5f7fb;
+  --surface-container: #eef2f9;
+  --surface-container-high: #e4eaf4;
+  --surface-container-highest: #dbe3f0;
 
-  /* Primary (Steel Blue Professional) */
-  --primary: #7eb5d6; /* Light Steel Blue */
-  --primary-container: #2c4454;
-  --on-primary: #0f1c24;
-  --on-primary-container: #d1e9f7;
+  /* Primary (Royal Blue) */
+  --primary: #1a6fcc;
+  --primary-container: #d4e8ff;
+  --on-primary: #ffffff;
+  --on-primary-container: #0a3b6e;
 
-  /* Secondary (Premium Cream) */
-  --secondary: #f5f5dc; /* Beige/Cream */
-  --secondary-container: #3d3b2a;
-  --on-secondary: #fffff0;
+  /* Secondary (Deep Navy) */
+  --secondary: #0f2b4a;
+  --secondary-container: #c8ddf5;
+  --on-secondary: #ffffff;
 
-  /* Tertiary (Soft Sky) */
-  --tertiary: #aed6f1;
-  --tertiary-container: #1b4f72;
+  /* Tertiary (Bright Cyan-Blue) */
+  --tertiary: #0891b2;
+  --tertiary-container: #cff4fc;
 
   /* Text on Surface */
-  --on-surface: #fdfcf0; /* Cream Text */
-  --on-surface-variant: #b0a89f;
-  --on-background: #fdfcf0;
+  --on-surface: #0f1c2e;
+  --on-surface-variant: #526580;
+  --on-background: #0f1c2e;
 
   /* Outline */
-  --outline: #7eb5d6;
-  --outline-variant: #2d2622;
+  --outline: #1a6fcc;
+  --outline-variant: #dbe3f0;
 
   /* Error */
-  --error: #e5b3b3;
-  --error-container: #4a1d1d;
+  --error: #dc2626;
+  --error-container: #fce8e8;
 
   /* Inverse */
-  --inverse-surface: #fdfcf0;
-  --inverse-on-surface: #1b1713;
-  --inverse-primary: #7eb5d6;
+  --inverse-surface: #0f2b4a;
+  --inverse-on-surface: #f0f4fa;
+  --inverse-primary: #5ba8f5;
 
   /* Typography */
   --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-label: 'Inter', sans-serif;
 
-  /* Spacing Scale (Unchanged) */
+  /* Spacing Scale */
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;
@@ -79,10 +79,11 @@
   --duration-normal: 400ms;
   --duration-slow: 700ms;
 
-  /* Shadows */
-  --shadow-ambient: 0 20px 50px rgba(0, 0, 0, 0.6);
-  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.5);
-  --shadow-blue: 0 0 30px rgba(126, 181, 214, 0.15);
+  /* Shadows (Light mode, soft blue tint) */
+  --shadow-ambient: 0 20px 50px rgba(15, 43, 74, 0.08);
+  --shadow-soft: 0 10px 40px rgba(15, 43, 74, 0.06);
+  --shadow-blue: 0 0 40px rgba(26, 111, 204, 0.12);
+  --shadow-gold: 0 8px 30px rgba(26, 111, 204, 0.18);
 }
 
 /* ── Reset & Base ── */
@@ -95,7 +96,7 @@
 }
 
 html {
-  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  scroll-behavior: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -168,23 +169,23 @@ select {
 
 /* ── Premium Effects ── */
 .glass {
-  background: rgba(6, 78, 59, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1.5px solid rgba(212, 175, 55, 0.1);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(26, 111, 204, 0.1);
   box-shadow: var(--shadow-soft);
 }
 
 .glass--light {
-  background: rgba(236, 253, 245, 0.05);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(26, 111, 204, 0.06);
 }
 
 .text-gold {
   color: var(--primary);
-  background: linear-gradient(135deg, var(--primary) 0%, #fcd34d 50%, var(--primary) 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--tertiary) 50%, var(--primary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -274,7 +275,7 @@ select {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--secondary);
+  color: var(--primary);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -285,7 +286,7 @@ select {
   display: inline-block;
   width: 24px;
   height: 1.5px;
-  background: var(--secondary);
+  background: var(--primary);
 }
 
 /* ── Button System ── */
@@ -308,15 +309,15 @@ select {
 }
 
 .btn--primary {
-  background: linear-gradient(135deg, var(--primary) 0%, #b48a28 100%);
-  color: #022c22;
+  background: linear-gradient(135deg, var(--primary) 0%, #1259a8 100%);
+  color: #ffffff;
   font-weight: 700;
   box-shadow: var(--shadow-gold);
 }
 
 .btn--primary:hover {
   transform: scale(1.02) translateY(-2px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 15px 30px rgba(26, 111, 204, 0.25), 0 0 25px rgba(26, 111, 204, 0.15);
 }
 
 .btn--primary:active {
@@ -324,26 +325,26 @@ select {
 }
 
 .btn--ghost {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(26, 111, 204, 0.05);
   color: var(--on-surface);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(26, 111, 204, 0.15);
 }
 
 .btn--ghost:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(26, 111, 204, 0.1);
   transform: translateY(-2px);
   border-color: var(--primary);
 }
 
 .btn--outline {
-  border: 1.5px solid rgba(212, 175, 55, 0.3);
-  color: var(--on-surface);
+  border: 1.5px solid rgba(26, 111, 204, 0.25);
+  color: var(--primary);
 }
 
 .btn--outline:hover {
   border-color: var(--primary);
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(26, 111, 204, 0.06);
   transform: translateY(-2px);
 }
 
@@ -403,11 +404,11 @@ select {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--outline);
+  background: var(--primary);
 }
 
 /* ── Selection ── */
 ::selection {
-  background: rgba(255, 179, 174, 0.3);
-  color: #fff;
+  background: rgba(26, 111, 204, 0.2);
+  color: var(--on-surface);
 }

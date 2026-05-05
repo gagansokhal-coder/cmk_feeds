@@ -1,7 +1,7 @@
 .inquiry-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(20, 17, 14, 0.88);
+  background: rgba(15, 43, 74, 0.5);
   backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
@@ -13,12 +13,12 @@
 .inquiry-modal {
   width: 100%;
   max-width: 480px;
-  background: rgba(27, 23, 19, 0.95);
-  border: 1.5px solid rgba(126, 181, 214, 0.2);
+  background: var(--surface-bright);
+  border: 1.5px solid rgba(26, 111, 204, 0.1);
   border-radius: var(--radius-2xl);
   padding: 40px;
   position: relative;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 40px 100px rgba(15, 43, 74, 0.15);
 }
 
 .inquiry-close {
@@ -54,8 +54,8 @@
   width: 100%;
   min-height: 140px;
   padding: 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(126, 181, 214, 0.2);
+  background: var(--surface-container-lowest);
+  border: 1px solid rgba(26, 111, 204, 0.12);
   border-radius: var(--radius-md);
   color: var(--on-surface);
   font-family: var(--font-body);
@@ -66,7 +66,7 @@
 
 .inquiry-field textarea:focus {
   border-color: var(--primary);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--surface-container);
   outline: none;
 }
 

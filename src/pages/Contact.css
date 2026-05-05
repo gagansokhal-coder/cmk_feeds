@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════
-   CONTACT PAGE
+   CONTACT PAGE — Premium Blue & White (Light)
    ═══════════════════════════════════════ */
 
 /* ── Hero ── */
@@ -27,9 +27,11 @@
 }
 
 .contact-detail {
-  background: var(--surface-container-low);
+  background: var(--surface-bright);
   padding: 36px;
   border-radius: var(--radius-xl);
+  border: 1px solid rgba(26, 111, 204, 0.06);
+  box-shadow: 0 2px 12px rgba(15, 43, 74, 0.04);
 }
 
 .contact-detail__items {
@@ -51,7 +53,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--secondary);
+  color: var(--primary);
 }
 
 .contact-detail__value {
@@ -66,8 +68,10 @@
   display: flex;
   gap: 16px;
   padding: 28px;
-  background: var(--surface-container);
+  background: var(--surface-bright);
   border-radius: var(--radius-xl);
+  border: 1px solid rgba(26, 111, 204, 0.06);
+  box-shadow: 0 2px 12px rgba(15, 43, 74, 0.04);
 }
 
 .contact-seal__icon {
@@ -84,7 +88,7 @@
 
 /* Map placeholder */
 .contact-map {
-  background: var(--surface-container-low);
+  background: var(--surface-bright);
   border-radius: var(--radius-xl);
   height: 180px;
   display: flex;
@@ -92,6 +96,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(26, 111, 204, 0.06);
 }
 
 .contact-map__inner {
@@ -112,7 +117,7 @@
   background: var(--primary);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: 0 0 0 4px rgba(126, 181, 214, 0.2);
+  box-shadow: 0 0 0 4px rgba(26, 111, 204, 0.15);
 }
 
 .contact-map__ping {
@@ -136,12 +141,14 @@
 
 /* ── Form ── */
 .contact-form {
-  background: var(--surface-container-low);
+  background: var(--surface-bright);
   padding: 44px;
   border-radius: var(--radius-2xl);
   display: flex;
   flex-direction: column;
   gap: 24px;
+  border: 1px solid rgba(26, 111, 204, 0.06);
+  box-shadow: 0 4px 24px rgba(15, 43, 74, 0.05);
 }
 
 .form-group {
@@ -156,7 +163,7 @@
   color: var(--on-surface);
   background: transparent;
   border: none;
-  border-bottom: 1.5px solid rgba(126, 181, 214, 0.2);
+  border-bottom: 1.5px solid rgba(26, 111, 204, 0.15);
   transition: border-color var(--duration-fast) ease;
   font-family: var(--font-label);
 }
@@ -175,7 +182,7 @@
 
 .form-group input:focus,
 .form-group textarea:focus {
-  border-bottom-color: var(--secondary);
+  border-bottom-color: var(--primary);
   outline: none;
 }
 
@@ -185,7 +192,7 @@
 .form-group textarea:not(:placeholder-shown) + label {
   top: -2px;
   font-size: 0.6875rem;
-  color: var(--secondary);
+  color: var(--primary);
   opacity: 1;
 }
 
@@ -221,35 +228,34 @@
   color: var(--on-surface);
   background-color: transparent;
   border: none;
-  border-bottom: 1.5px solid rgba(126, 181, 214, 0.2);
+  border-bottom: 1.5px solid rgba(26, 111, 204, 0.15);
   cursor: pointer;
   appearance: none;
   font-family: var(--font-label);
   transition: border-color var(--duration-fast) ease;
 }
 
-/* Ensure the dropdown list itself is visible on dark backgrounds */
 .form-group--select select option {
-  background-color: var(--surface-container-high);
+  background-color: var(--surface-bright);
   color: var(--on-surface);
   padding: 12px;
 }
 
 .form-group--select select:focus {
-  border-bottom-color: var(--secondary);
+  border-bottom-color: var(--primary);
   outline: none;
 }
 
 .btn--success {
-  background: linear-gradient(135deg, var(--secondary) 0%, var(--surface-bright) 100%) !important;
-  color: var(--surface-dim) !important;
+  background: linear-gradient(135deg, var(--primary) 0%, #1259a8 100%) !important;
+  color: #ffffff !important;
 }
 
 .form-success {
   text-align: center;
   font-family: var(--font-body);
   font-size: 0.9375rem;
-  color: var(--secondary);
+  color: var(--primary);
   animation: fadeIn 0.4s ease;
 }
 
@@ -298,26 +304,12 @@
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .contact-form {
-    padding: 32px 24px;
-  }
-
-  .network__stats {
-    gap: 36px;
-  }
-
-  .network__stat-num {
-    font-size: 2.25rem;
-  }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-form { padding: 32px 24px; }
+  .network__stats { gap: 36px; }
+  .network__stat-num { font-size: 2.25rem; }
 }
 
 @media (max-width: 480px) {
-  .contact-hero {
-    padding: 120px 0 48px;
-  }
+  .contact-hero { padding: 120px 0 48px; }
 }

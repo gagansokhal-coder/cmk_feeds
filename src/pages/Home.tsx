@@ -11,24 +11,27 @@ import './Home.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const featuredProducts: ProductData[] = [
+const featuredProducts: (ProductData & { image: string })[] = [
   {
-    name: 'Heritage Blend',
-    desc: 'The base for a healthy herd. Made with high-quality barley and oils for better growth and a shiny coat.',
-    protein: '18.5%',
-    energy: '13.2 MJ',
+    name: 'CMK Gold',
+    desc: 'Our flagship feed for high-yield milking cows. Reduces metabolic stress, improves fat% and SNF for peak milk output. Steam-processed for maximum digestibility.',
+    protein: '20%',
+    energy: '13.8 MJ',
+    image: '/images/cmk-gold-product.jpg',
   },
   {
-    name: 'Prime Lab Elite',
-    desc: 'Made to help cattle use food better. Small pellets that work well with natural grass.',
-    protein: '22.1%',
+    name: 'CMK Silver',
+    desc: 'Complete balanced cattle feed for everyday nutrition. Perfect blend of crude protein, fiber, and essential minerals — delivering complete health for your animal at great value.',
+    protein: '18%',
+    energy: '12.5 MJ',
+    image: '/images/cmk-silver-product.png',
+  },
+  {
+    name: 'CMK Calf Starter',
+    desc: 'High-energy probiotic-rich formula for calves aged 5 days to 4 months. Accelerates immunity, rumen development, and bone strengthening for the strongest herd foundation.',
+    protein: '22%',
     energy: '14.8 MJ',
-  },
-  {
-    name: 'Winter Reserve',
-    desc: 'High-fat mix to help cattle stay strong in cold weather. Includes healthy molasses and minerals.',
-    protein: '16.8%',
-    energy: '15.4 MJ',
+    image: '/images/cmk-gold-product.jpg',
   },
 ]
 
@@ -560,8 +563,8 @@ export default function Home() {
                   <p className="product-float__mobile-label">CMK Gold</p>
                 </div>
                 <div className="product-float__mobile-card">
-                  <img src="/images/cmk-gold-product.jpg" alt="CMK Calf Starter" />
-                  <p className="product-float__mobile-label">Calf Starter</p>
+                  <img src="/images/cmk-silver-product.png" alt="CMK Silver" />
+                  <p className="product-float__mobile-label">CMK Silver</p>
                 </div>
               </div>
             </div>
@@ -576,14 +579,14 @@ export default function Home() {
           />
           <img
             ref={floatImg2}
-            src="/images/feed-product.png"
-            alt="CMK Feed"
+            src="/images/cmk-silver-product.png"
+            alt="CMK Silver"
             className="product-float__img product-float__img--2"
           />
           <img
             ref={floatImg3}
             src="/images/cmk-gold-product.jpg"
-            alt="CMK Premium"
+            alt="CMK Calf Starter"
             className="product-float__img product-float__img--3"
           />
         </div>
@@ -605,7 +608,7 @@ export default function Home() {
                   border: '1px solid rgba(255,255,255,0.06)'
                 }}>
                   <div style={{ height: 220, overflow: 'hidden' }}>
-                    <img src="/images/cmk-gold-product.jpg" alt={product.name}
+                    <img src={product.image} alt={product.name}
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
                   <div style={{ padding: '24px 20px' }}>
@@ -644,7 +647,7 @@ export default function Home() {
             {featuredProducts.map((product, i) => (
               <div className="hscroll__panel hscroll-card" key={product.name} style={{ display: 'flex' }}>
                 <div className="hscroll-card__img">
-                  <img src="/images/cmk-gold-product.jpg" alt={product.name} />
+                  <img src={product.image} alt={product.name} />
                 </div>
                 <div className="hscroll-card__content">
                   <span className="product-num">0{i + 1}</span>

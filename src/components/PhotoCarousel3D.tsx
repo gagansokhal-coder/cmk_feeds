@@ -9,6 +9,11 @@ const slides = [
     desc: 'Inspired by the spirit of Rajasthan, we bring traditional wisdom to modern cattle nutrition.'
   },
   {
+    image: '/images/cmk-silver-product.png',
+    title: 'CMK Silver — Balanced Nutrition',
+    desc: 'Complete balanced cattle feed with the perfect blend of protein, fiber, and minerals for everyday health.'
+  },
+  {
     image: '/images/ranch-bull.png',
     title: 'The Gold Standard',
     desc: 'Our feed is trusted by the top ranches across the country for superior performance.'

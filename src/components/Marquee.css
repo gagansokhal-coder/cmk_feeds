@@ -1,4 +1,4 @@
-/* ── Marquee ── */
+/* ── Marquee — Premium Blue & White (Light) ── */
 .marquee {
   overflow: hidden;
   white-space: nowrap;
@@ -12,8 +12,8 @@
 
 .marquee--outline {
   background: transparent;
-  border-top: 1px solid rgba(85, 66, 65, 0.12);
-  border-bottom: 1px solid rgba(85, 66, 65, 0.12);
+  border-top: 1px solid rgba(26, 111, 204, 0.08);
+  border-bottom: 1px solid rgba(26, 111, 204, 0.08);
 }
 
 .marquee--muted {
@@ -48,9 +48,9 @@
 }
 
 .marquee--outline .marquee__text {
-  -webkit-text-stroke: 1.5px var(--on-surface-variant);
+  -webkit-text-stroke: 1.5px rgba(26, 111, 204, 0.25);
   color: transparent;
-  opacity: 0.4;
+  opacity: 0.5;
 }
 
 .marquee__sep {

@@ -44,7 +44,7 @@
   height: 100%;
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  box-shadow: var(--shadow-ambient);
+  box-shadow: 0 16px 48px rgba(15, 43, 74, 0.12);
   transform: translateZ(0);
 }
 
@@ -58,7 +58,7 @@
 .carousel-3d__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+  background: linear-gradient(to top, rgba(15, 43, 74, 0.8) 0%, transparent 60%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -82,19 +82,21 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: var(--surface-container-high);
+  background: var(--surface-bright);
   color: var(--on-surface);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all var(--duration-fast) var(--ease-out);
-  border: 1px solid rgba(126, 181, 214, 0.2);
+  border: 1px solid rgba(26, 111, 204, 0.1);
+  box-shadow: 0 4px 16px rgba(15, 43, 74, 0.06);
 }
 
 .carousel-nav-btn:hover {
   background: var(--primary);
   color: var(--on-primary);
   transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(26, 111, 204, 0.2);
 }
 
 .carousel-nav-btn:active {
@@ -118,5 +120,5 @@
 .carousel-3d__dot--active {
   background: var(--primary);
   transform: scale(1.5);
-  box-shadow: 0 0 10px var(--primary);
+  box-shadow: 0 0 12px rgba(26, 111, 204, 0.3);
 }

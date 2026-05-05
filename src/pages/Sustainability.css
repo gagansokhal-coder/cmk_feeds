@@ -1,8 +1,8 @@
 /* ═══════════════════════════════════════
-   SUSTAINABILITY PAGE
+   SUSTAINABILITY PAGE — Premium Blue & White (Light)
    ═══════════════════════════════════════ */
 
-/* ── Hero ── */
+/* ── Hero (dark overlay for readability) ── */
 .sustain-hero {
   position: relative;
   min-height: 75vh;
@@ -28,18 +28,38 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(27, 23, 19, 0.4) 0%,
-    rgba(16, 13, 11, 0.9) 70%,
-    rgba(16, 13, 11, 1) 100%
+    rgba(15, 43, 74, 0.4) 0%,
+    rgba(15, 43, 74, 0.9) 70%,
+    rgba(15, 43, 74, 1) 100%
   );
 }
 
 .sustain-hero__content {
   position: relative;
   z-index: 2;
+  color: #ffffff;
 }
 
-/* ── Regenerative ── */
+.sustain-hero__content .display-md,
+.sustain-hero__content .headline-lg,
+.sustain-hero__content .display-lg {
+  color: #ffffff;
+}
+
+.sustain-hero__content .body-lg,
+.sustain-hero__content .body-md {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sustain-hero__content .label-tag {
+  color: #5ba8f5;
+}
+
+.sustain-hero__content .label-tag::before {
+  background: #5ba8f5;
+}
+
+/* ── Regenerative (Light) ── */
 .regen__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -53,12 +73,13 @@
   gap: 10px;
   margin-top: 28px;
   padding: 12px 20px;
-  background: rgba(126, 181, 214, 0.1);
+  background: var(--primary-container);
   border-radius: var(--radius-full);
   font-family: var(--font-label);
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--secondary);
+  color: var(--primary);
+  border: 1px solid rgba(26, 111, 204, 0.1);
 }
 
 .regen__metrics {
@@ -104,10 +125,10 @@
 }
 
 .progress-bar__fill--secondary {
-  background: linear-gradient(90deg, var(--secondary) 0%, var(--secondary-container) 100%);
+  background: linear-gradient(90deg, var(--tertiary) 0%, var(--primary) 100%);
 }
 
-/* ── Pillars ── */
+/* ── Pillars (Light) ── */
 .pillars__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -116,28 +137,30 @@
 }
 
 .pillar-card {
-  background: var(--surface-container-low);
+  background: var(--surface-bright);
   padding: 40px 32px;
   border-radius: var(--radius-xl);
   position: relative;
   transition: transform var(--duration-normal) var(--ease-out),
     box-shadow var(--duration-normal) var(--ease-out);
+  border: 1px solid rgba(26, 111, 204, 0.06);
+  box-shadow: 0 2px 12px rgba(15, 43, 74, 0.04);
 }
 
 .pillar-card:hover {
   transform: translateY(-6px);
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 16px 48px rgba(15, 43, 74, 0.1), 0 0 20px rgba(26, 111, 204, 0.05);
 }
 
 .pillar-card__icon {
   width: 56px;
   height: 56px;
   border-radius: var(--radius-lg);
-  background: var(--surface-container-highest);
+  background: var(--primary-container);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--secondary);
+  color: var(--primary);
   margin-bottom: 20px;
 }
 
@@ -148,34 +171,25 @@
   font-family: var(--font-display);
   font-size: 3rem;
   font-weight: 900;
-  color: rgba(126, 181, 214, 0.05);
+  color: rgba(26, 111, 204, 0.06);
   line-height: 1;
 }
 
 /* ── CTA ── */
 .sustain-cta__inner {
-  background: var(--surface-container);
+  background: var(--surface-container-lowest);
   padding: 64px;
   border-radius: var(--radius-2xl);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid rgba(26, 111, 204, 0.06);
 }
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
-  .regen__grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .pillars__grid {
-    grid-template-columns: 1fr;
-    max-width: 480px;
-  }
-
-  .sustain-cta__inner {
-    padding: 40px 24px;
-  }
+  .regen__grid { grid-template-columns: 1fr; gap: 48px; }
+  .pillars__grid { grid-template-columns: 1fr; max-width: 480px; }
+  .sustain-cta__inner { padding: 40px 24px; }
 }

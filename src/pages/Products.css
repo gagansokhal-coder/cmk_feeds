@@ -1,8 +1,8 @@
 /* ═══════════════════════════════════════
-   PRODUCTS PAGE — Premium UI
+   PRODUCTS PAGE — Premium Blue & White (Light)
    ═══════════════════════════════════════ */
 
-/* ── Hero ── */
+/* ── Hero (dark overlay for image readability) ── */
 .products-hero {
   position: relative;
   min-height: 72vh;
@@ -22,8 +22,8 @@
   height: 100%;
   object-fit: cover;
   object-position: center 20%;
-  opacity: 0.28;
-  filter: saturate(0.6) blur(1px);
+  opacity: 0.35;
+  filter: saturate(0.7) blur(1px);
 }
 
 .products-hero__overlay {
@@ -31,19 +31,40 @@
   inset: 0;
   background: linear-gradient(
     160deg,
-    rgba(18, 15, 12, 0.55) 0%,
-    rgba(10, 8, 6, 0.98) 75%
+    rgba(15, 43, 74, 0.6) 0%,
+    rgba(15, 43, 74, 0.96) 75%
   );
 }
 
 .products-hero__content {
   position: relative;
   z-index: 2;
+  color: #ffffff;
 }
 
-/* ── Showcase Layout ── */
+.products-hero__content .display-md,
+.products-hero__content .headline-lg,
+.products-hero__content .display-lg {
+  color: #ffffff;
+}
+
+.products-hero__content .body-lg,
+.products-hero__content .body-md {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.products-hero__content .label-tag {
+  color: #5ba8f5;
+}
+
+.products-hero__content .label-tag::before {
+  background: #5ba8f5;
+}
+
+/* ── Showcase Layout (Light) ── */
 .products-showcase {
   padding: 80px 0 100px;
+  background: var(--surface);
 }
 
 .products-showcase__list {
@@ -52,17 +73,17 @@
   gap: 64px;
 }
 
-/* ── Product Card (pcard) ── */
+/* ── Product Card (pcard) — Light ── */
 .pcard {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1.15fr;
   gap: 0;
-  background: var(--surface-container-low);
+  background: var(--surface-bright);
   border-radius: 28px;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.06);
-  box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+  border: 1px solid rgba(26, 111, 204, 0.08);
+  box-shadow: 0 4px 24px rgba(15, 43, 74, 0.06);
   transition: box-shadow 0.4s ease, transform 0.4s ease;
 }
 
@@ -70,20 +91,14 @@
   grid-template-columns: 1.15fr 1fr;
 }
 
-.pcard:nth-child(even) .pcard__img-wrap {
-  order: 1;
-}
-
-.pcard:nth-child(even) .pcard__body {
-  order: 0;
-}
+.pcard:nth-child(even) .pcard__img-wrap { order: 1; }
+.pcard:nth-child(even) .pcard__body { order: 0; }
 
 .pcard:hover {
-  box-shadow: 0 12px 60px rgba(0,0,0,0.45);
+  box-shadow: 0 12px 48px rgba(15, 43, 74, 0.12), 0 0 30px rgba(26, 111, 204, 0.06);
   transform: translateY(-4px);
 }
 
-/* Index number */
 .pcard__index {
   position: absolute;
   top: 28px;
@@ -91,19 +106,18 @@
   font-family: var(--font-display);
   font-size: 5rem;
   font-weight: 900;
-  color: rgba(255,255,255,0.04);
+  color: rgba(26, 111, 204, 0.05);
   line-height: 1;
   pointer-events: none;
   z-index: 0;
   user-select: none;
 }
 
-/* Image side */
 .pcard__img-wrap {
   position: relative;
   min-height: 480px;
   overflow: hidden;
-  background: #0e0b09;
+  background: var(--surface-container-lowest);
 }
 
 .pcard__img-glow {
@@ -111,7 +125,7 @@
   inset: 0;
   background: radial-gradient(
     ellipse at 50% 80%,
-    color-mix(in srgb, var(--glow, #e8a422) 22%, transparent) 0%,
+    color-mix(in srgb, var(--glow, #1a6fcc) 10%, transparent) 0%,
     transparent 70%
   );
   z-index: 1;
@@ -127,14 +141,13 @@
   transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   z-index: 2;
-  filter: drop-shadow(0 24px 40px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 16px 32px rgba(15, 43, 74, 0.15));
 }
 
 .pcard:hover .pcard__img {
   transform: scale(1.05) translateY(-8px);
 }
 
-/* Content side */
 .pcard__body {
   padding: 48px 52px;
   display: flex;
@@ -156,9 +169,9 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--on-surface-variant);
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--primary);
+  background: var(--primary-container);
+  border: 1px solid rgba(26, 111, 204, 0.12);
   border-radius: 100px;
   padding: 4px 12px;
 }
@@ -190,7 +203,6 @@
   max-width: 480px;
 }
 
-/* Feature pills */
 .pcard__features {
   display: flex;
   flex-wrap: wrap;
@@ -202,25 +214,24 @@
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--on-surface);
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--primary);
+  background: var(--primary-container);
+  border: 1px solid rgba(26, 111, 204, 0.1);
   border-radius: 100px;
   padding: 5px 13px;
   transition: background 0.2s ease;
 }
 
 .pcard__feature-pill:hover {
-  background: rgba(255,255,255,0.12);
+  background: rgba(26, 111, 204, 0.12);
 }
 
-/* Stats bar */
 .pcard__stats {
   display: flex;
   align-items: center;
   gap: 0;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: var(--surface-container-lowest);
+  border: 1px solid rgba(26, 111, 204, 0.08);
   border-radius: 16px;
   padding: 20px 24px;
   margin-top: auto;
@@ -236,7 +247,7 @@
 .pcard__stat-divider {
   width: 1px;
   height: 40px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(26, 111, 204, 0.1);
   margin: 0 24px;
   flex-shrink: 0;
 }
@@ -256,9 +267,9 @@
   font-size: 1.5rem;
   font-weight: 800;
   line-height: 1;
+  color: var(--primary);
 }
 
-/* Actions */
 .pcard__actions {
   display: flex;
   gap: 12px;
@@ -266,11 +277,12 @@
 
 /* ── Bespoke Section ── */
 .bespoke__card {
-  background: var(--surface-container);
+  background: var(--surface-container-lowest);
   border-radius: var(--radius-2xl);
   overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  border: 1px solid rgba(26, 111, 204, 0.06);
 }
 
 .bespoke__text {
@@ -286,7 +298,7 @@
   color: var(--on-surface-variant);
   margin-top: 24px;
   padding-left: 20px;
-  border-left: 2px solid var(--primary);
+  border-left: 3px solid var(--primary);
 }
 
 .bespoke__img {
@@ -297,74 +309,31 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.8) saturate(0.9);
+  filter: brightness(0.9) saturate(0.95);
 }
 
 /* ── Responsive ── */
 @media (max-width: 1024px) {
-  .pcard {
-    grid-template-columns: 1fr;
-  }
-
-  .pcard:nth-child(even) {
-    grid-template-columns: 1fr;
-  }
-
+  .pcard { grid-template-columns: 1fr; }
+  .pcard:nth-child(even) { grid-template-columns: 1fr; }
   .pcard:nth-child(even) .pcard__img-wrap,
-  .pcard:nth-child(even) .pcard__body {
-    order: unset;
-  }
-
-  .pcard__img-wrap {
-    min-height: 320px;
-  }
-
-  .pcard__body {
-    padding: 36px 40px;
-  }
+  .pcard:nth-child(even) .pcard__body { order: unset; }
+  .pcard__img-wrap { min-height: 320px; }
+  .pcard__body { padding: 36px 40px; }
 }
 
 @media (max-width: 768px) {
-  .pcard__body {
-    padding: 28px 24px;
-  }
-
-  .pcard__stats {
-    padding: 16px 18px;
-  }
-
-  .pcard__stat-divider {
-    margin: 0 14px;
-  }
-
-  .pcard__stat-value {
-    font-size: 1.2rem;
-  }
-
-  .bespoke__card {
-    grid-template-columns: 1fr;
-  }
-
-  .bespoke__text {
-    padding: 36px;
-  }
-
-  .bespoke__img {
-    height: 280px;
-  }
+  .pcard__body { padding: 28px 24px; }
+  .pcard__stats { padding: 16px 18px; }
+  .pcard__stat-divider { margin: 0 14px; }
+  .pcard__stat-value { font-size: 1.2rem; }
+  .bespoke__card { grid-template-columns: 1fr; }
+  .bespoke__text { padding: 36px; }
+  .bespoke__img { height: 280px; }
 }
 
 @media (max-width: 480px) {
-  .pcard__actions {
-    flex-direction: column;
-  }
-
-  .pcard__stats {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .pcard__stat-divider {
-    display: none;
-  }
+  .pcard__actions { flex-direction: column; }
+  .pcard__stats { flex-direction: column; gap: 12px; }
+  .pcard__stat-divider { display: none; }
 }
