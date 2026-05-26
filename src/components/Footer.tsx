@@ -8,8 +8,8 @@ export default function Footer() {
         <div className="footer__top">
           <div className="footer__brand">
             <Link to="/" className="navbar__logo">
+              <img src="/images/cmk-logo.png" alt="CMK Logo" className="navbar__logo-img" />
               <span className="navbar__logo-mark">CMK</span>
-              <span className="navbar__logo-text">FEED</span>
             </Link>
             <p className="footer__tagline">
               The Gold Standard in Cattle Nutrition.
@@ -43,7 +43,7 @@ export default function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <p>&copy; 2024 CMK Feed. Farmers for Farmers. The Gold Standard in Cattle Nutrition.</p>
+          <p>&copy; 2024 CMK. Farmers for Farmers. The Gold Standard in Cattle Nutrition.</p>
         </div>
       </div>
     </footer>

@@ -30,10 +30,21 @@
 /* Logo */
 .navbar__logo {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   text-decoration: none;
   z-index: 1001;
-  gap: 6px;
+  gap: 10px;
+}
+
+.navbar__logo-img {
+  height: 44px;
+  width: 44px;
+  object-fit: contain;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.navbar__logo:hover .navbar__logo-img {
+  transform: scale(1.06) rotate(3deg);
 }
 
 .navbar__logo-mark {

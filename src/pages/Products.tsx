@@ -1,5 +1,4 @@
 import { useRef, useLayoutEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import RevealOnScroll from '../components/RevealOnScroll'
@@ -64,7 +63,6 @@ const products: CMKProduct[] = [
 export default function Products() {
   const heroRef = useRef<HTMLDivElement>(null)
   const heroImgRef = useRef<HTMLImageElement>(null)
-  const bespokeImgRef = useRef<HTMLDivElement>(null)
 
   const [selectedProduct, setSelectedProduct] = useState<ProductData | null>(null)
   const [isInquiryOpen, setIsInquiryOpen] = useState(false)
@@ -102,15 +100,6 @@ export default function Products() {
           }
         )
       })
-
-      // Bespoke Curtain Wipe
-      if (bespokeImgRef.current) {
-        const overlay = bespokeImgRef.current.querySelector('.img-reveal__overlay')
-        const img = bespokeImgRef.current.querySelector('img')
-        const tl = gsap.timeline({ scrollTrigger: { trigger: bespokeImgRef.current, start: 'top 80%' } })
-        tl.to(overlay, { scaleX: 0, duration: 1.2, ease: 'power4.inOut', transformOrigin: 'right center' })
-          .fromTo(img, { scale: 1.3 }, { scale: 1, duration: 1.5, ease: 'power3.out' }, 0.2)
-      }
     })
     return () => ctx.revert()
   }, [])
@@ -179,24 +168,6 @@ export default function Products() {
                     ))}
                   </div>
 
-                  {/* Stats bar */}
-                  <div className="pcard__stats">
-                    <div className="pcard__stat">
-                      <span className="pcard__stat-label">Crude Protein</span>
-                      <span className="pcard__stat-value" style={{ color: product.color }}>{product.protein}</span>
-                    </div>
-                    <div className="pcard__stat-divider" />
-                    <div className="pcard__stat">
-                      <span className="pcard__stat-label">Metabolic Energy</span>
-                      <span className="pcard__stat-value" style={{ color: product.color }}>{product.energy}</span>
-                    </div>
-                    <div className="pcard__stat-divider" />
-                    <div className="pcard__stat">
-                      <span className="pcard__stat-label">Pack Weight</span>
-                      <span className="pcard__stat-value" style={{ color: product.color }}>{product.weight}</span>
-                    </div>
-                  </div>
-
                   {/* Actions */}
                   <div className="pcard__actions">
                     <MagneticButton>
@@ -218,39 +189,6 @@ export default function Products() {
         </div>
       </section>
 
-      {/* ═══ BESPOKE CTA ═══ */}
-      <section className="bespoke section">
-        <div className="container">
-          <div className="bespoke__card">
-            <RevealOnScroll className="bespoke__text">
-              <span className="label-tag">Custom Feed</span>
-              <h2 className="headline-lg" style={{ marginTop: 16 }}>
-                Custom Feed for Your Farm
-              </h2>
-              <p className="body-lg" style={{ marginTop: 16 }}>
-                For larger herds, our experts can craft a custom blend
-                tailored to your farm's soil and water profile.
-                Give your cattle exactly what they need.
-              </p>
-              <p className="bespoke__quote">
-                &ldquo;Complete health for your animal.&rdquo;
-              </p>
-              <MagneticButton style={{ marginTop: 32 }}>
-                <Link to="/contact" className="btn btn--primary">
-                  Ask for a Custom Mix
-                </Link>
-              </MagneticButton>
-            </RevealOnScroll>
-
-            <div className="bespoke__img">
-              <div className="img-reveal" ref={bespokeImgRef} style={{ height: '100%', borderRadius: 0 }}>
-                <div className="img-reveal__overlay" />
-                <img src="/images/laboratory.png" alt="CMK Feed Laboratory" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <InquiryModal
         isOpen={isInquiryOpen}

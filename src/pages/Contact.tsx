@@ -77,7 +77,7 @@ export default function Contact() {
             {/* Info Column */}
             <RevealOnScroll className="contact-info">
               <div className="contact-detail">
-                <h3 className="title-lg">The CMK FEEDS</h3>
+                <h3 className="title-lg">CMK</h3>
                 <div className="contact-detail__items">
                   <div className="contact-detail__item">
                     <span className="contact-detail__label">Headquarters</span>
@@ -179,37 +179,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <Marquee text="Global Distribution Network" separator="✦" />
 
-      {/* ═══ NETWORK ═══ */}
-      <section className="network section">
-        <div className="container">
-          <RevealOnScroll className="network__inner">
-            <span className="label-tag">Logistics</span>
-            <h2 className="headline-lg" style={{ marginTop: 16 }}>
-              Fresh Feed, Everywhere
-            </h2>
-            <p className="body-lg" style={{ marginTop: 16, maxWidth: 560 }}>
-              We ship our feed to six continents. We make sure it stays
-              fresh from our farm to yours.
-            </p>
-            <div className="network__stats">
-              <div className="network__stat">
-                <span className="network__stat-num">6</span>
-                <span className="network__stat-label">Continents</span>
-              </div>
-              <div className="network__stat">
-                <span className="network__stat-num">24</span>
-                <span className="network__stat-label">Countries</span>
-              </div>
-              <div className="network__stat">
-                <span className="network__stat-num">48h</span>
-                <span className="network__stat-label">Avg. Delivery</span>
-              </div>
-            </div>
-          </RevealOnScroll>
-        </div>
-      </section>
     </div>
   )
 }

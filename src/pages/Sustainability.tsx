@@ -111,7 +111,7 @@ export default function Sustainability() {
       {/* ═══ HERO ═══ */}
       <section className="sustain-hero">
         <div className="sustain-hero__bg">
-          <img ref={heroImgRef} src="/images/ranch-landscape.png" alt="CMK Feed sustainable ranch" />
+          <img ref={heroImgRef} src="/images/ranch-landscape.png" alt="CMK sustainable ranch" />
           <div className="sustain-hero__overlay" />
           <div className="hero__grain" />
         </div>
@@ -137,7 +137,7 @@ export default function Sustainability() {
             <RevealOnScroll className="regen__text">
               <h2 className="display-md">Better Farming for the Future</h2>
               <p className="body-lg" style={{ marginTop: 24 }}>
-                At CMK Feed, we care about the whole environment. Our farming
+                At CMK, we care about the whole environment. Our farming
                 ways help keep the soil healthy and save water. We believe
                 healthy cattle need a healthy earth.
               </p>

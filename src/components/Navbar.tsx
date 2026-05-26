@@ -34,8 +34,8 @@ export default function Navbar() {
       <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
         <div className="navbar__inner">
           <Link to="/" className="navbar__logo">
+            <img src="/images/cmk-logo.png" alt="CMK Logo" className="navbar__logo-img" />
             <span className="navbar__logo-mark">CMK</span>
-            <span className="navbar__logo-text">FEED</span>
           </Link>
 
           <div className="navbar__links">

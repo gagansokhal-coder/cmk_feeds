@@ -64,11 +64,11 @@ export default function PrivacyPolicy() {
                   <h3 className="title-lg">Definitions</h3>
                   <ul>
                     <li><strong>Account</strong> means a unique account created for You to access our Service.</li>
-                    <li><strong>Company</strong> refers to CMK Feed, 1 Bnw Hakmabad, Rajasthan, India.</li>
+                    <li><strong>Company</strong> refers to CMK, 1 Bnw Hakmabad, Rajasthan, India.</li>
                     <li><strong>Cookies</strong> are small files placed on Your device by a website.</li>
                     <li><strong>Personal Data</strong> is any information that relates to an identified individual.</li>
                     <li><strong>Service</strong> refers to the Website.</li>
-                    <li><strong>Website</strong> refers to CMK Feed, accessible from <a href="https://www.cmkfeed.in" target="_blank" rel="noopener noreferrer">https://www.cmkfeed.in/</a></li>
+                    <li><strong>Website</strong> refers to CMK, accessible from <a href="https://www.cmkfeed.in" target="_blank" rel="noopener noreferrer">https://www.cmkfeed.in/</a></li>
                   </ul>
                 </section>
 

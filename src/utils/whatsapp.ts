@@ -1,5 +1,5 @@
 /**
- * WhatsApp Utility for CMK Feed
+ * WhatsApp Utility for CMK
  * Handles generation of wa.me links for different business contexts.
  */
 
@@ -31,7 +31,7 @@ export function getWhatsAppUrl(
   let body = '';
   
   if (type === 'ORDER') {
-    body = `Hello CMK Feed! 👋\n\nI would like to place an order for:\n\n*Product:* ${product.name}\n*Protein:* ${product.protein}\n*Energy:* ${product.energy}\n\nPlease let me know the pricing and delivery process.`;
+    body = `Hello CMK! 👋\n\nI would like to place an order for:\n\n*Product:* ${product.name}\n*Protein:* ${product.protein}\n*Energy:* ${product.energy}\n\nPlease let me know the pricing and delivery process.`;
   } else {
     body = `Hello! I have an inquiry regarding:\n\n*Product:* ${product.name}\n*Details:* ${product.desc}\n\n*My Message:* ${customMessage || 'I would like to learn more about this product.'}`;
   }
@@ -49,7 +49,7 @@ export function getGeneralWhatsAppUrl(data: {
   message: string;
 }): string {
   const number = WHATSAPP_NUMBERS.CONTACT;
-  const body = `Hello CMK Feed! 👋\n\n*New Inquiry from Website*\n\n*Name:* ${data.fullName}\n*Email:* ${data.email}\n*Farm/Ranch:* ${data.ranch || 'N/A'}\n*Herd Size:* ${data.herdSize}\n\n*Message:* ${data.message}`;
+  const body = `Hello CMK! 👋\n\n*New Inquiry from Website*\n\n*Name:* ${data.fullName}\n*Email:* ${data.email}\n*Farm/Ranch:* ${data.ranch || 'N/A'}\n*Herd Size:* ${data.herdSize}\n\n*Message:* ${data.message}`;
   
   return `https://wa.me/${number}?text=${encodeURIComponent(body)}`;
 }
